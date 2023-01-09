@@ -9,8 +9,16 @@ public class MapList : MonoBehaviour
 
     [SerializeField] List<GameObject> _mapList = new List<GameObject>();
 
+    private void Start()
+    {
+        GameManager.Instance.Reset();
+
+        Started();
+    }
+
 
     GameObject map;
+    GameObject Base;
 
     public List<T> GetShuffleList<T>(List<T> _list)
     {
@@ -26,20 +34,30 @@ public class MapList : MonoBehaviour
 
     public void Started()
     {
+        StartCoroutine(Startedd());
+    }
+    public IEnumerator Startedd()
+    {
         GameObject t = Instantiate(BaseGame);
         t.transform.position = transform.position;
-
+        Base = t;
 
         _mapList = GetShuffleList(_mapList);
 
-        map = _mapList[0];
+        yield return null;
 
-        _mapList.Remove(_mapList[0]);
+        GameObject o = Instantiate(_mapList[0]);
+
+        map = o;
+        o.transform.position = transform.position;
+
+        //_mapList.Remove(_mapList[0]);
     }
 
-    public void SelectEnd()
+    public void RoundEnd()
     {
         Destroy(map);
+        Destroy(Base);
     }
 
 

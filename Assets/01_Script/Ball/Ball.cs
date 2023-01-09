@@ -18,14 +18,14 @@ public class Ball : MonoBehaviour
     [SerializeField] float Origin_speed = 3;
     float Origin_size = 0.4f;
     Vector2 Origin_angle = Vector2.zero;
-    float Origin_Alter = 1;
-
+    [SerializeField]float Origin_Alter = 1;
 
 
     private void OnEnable()
     {
+        Origin_Alter = 1;
         _rigid = GetComponent<Rigidbody2D>();
-        if (Random.Range(0, 100) % 2 == 0)
+        if (Random.Range(0, 101) % 2 == 0)
         {
             Origin_angle = new Vector2(1, Random.Range(-1f, 1f));
         }
@@ -40,7 +40,22 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_rigid.velocity.y);
+        if (Mathf.Abs(_rigid.velocity.x) < 1f || _rigid.velocity.x + _rigid.velocity.y < Origin_speed * Origin_Alter - 1)
+        {
+            if (Origin_Alter < 1)
+            {
+                _rigid.velocity = Origin_speed * Origin_angle * Random.Range(Origin_Alter - 0.5f, Origin_Alter + 0.2f);
+            }
+            else
+            {
+                _rigid.velocity = Origin_speed * Origin_angle;
+            }
+        }
+
+
+        transform.localScale = new Vector3(0.4f, 0.4f, 1) * Origin_Alter;
+        Origin_speed = 5 * Origin_Alter;
+
     }
 
 
@@ -66,11 +81,8 @@ public class Ball : MonoBehaviour
         }
     }
 
-    public void SizeSetting()
-    {
-        transform.localScale *= Origin_size;
-
-    }
+    
+    
 
     public void LastSet(int Dir, float angler)
     {
@@ -97,26 +109,43 @@ public class Ball : MonoBehaviour
         Debug.Log($"{Dir} * {Origin_speed} * {Angle_Changer.y} * {Origin_Alter}");
 
         
-
-        _rigid.velocity = Origin_speed * Angle_Changer * Origin_Alter;
-
+        if(Origin_Alter < 1)
+        {
+            _rigid.velocity = Origin_speed * Angle_Changer *Random.Range(Origin_Alter - 0.5f, Origin_Alter + 0.2f);
+        }
+        else
+        {
+            _rigid.velocity = Origin_speed * Angle_Changer;
+        }
+        
         Origin_angle = Angle_Changer;
     }
     public void AlterSetting()
     {
-        if (Origin_Alter > 0.25f)
+        Debug.Log($"{gameObject.name} : {Origin_Alter}");
+        if (Origin_Alter > 0.6f)
         {
-            Origin_Alter *= 0.5f;
-
+            Origin_Alter -= 0.2f;
             Ball b = Instantiate(this);
 
-            b.transform.position = transform.position;
-            b.transform.localScale *= 0.5f;
+            b._rigid.velocity *= -1; 
 
-            b.Setting(BallEnum.Angle, 1, 1, Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+            b.Origin_Alter = Origin_Alter;
+            
+            b.transform.position = transform.position;
+
+
+            if(transform.position.y > 0)
+                b.Setting(BallEnum.Angle, 1, 1, -1, Random.Range(-1f, 1f));
+            else
+            {
+                b.Setting(BallEnum.Angle, 1, 1, 1, Random.Range(-1f, 1f));
+            }
+            b.transform.parent = this.transform.parent;
             
         }
     }
+
     public void SpeedSetting(float speed)
     {
         this.Origin_speed *= speed;
@@ -134,16 +163,22 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Map")) // ¿≠∫Æ æ∆∑ø∫Æ ø°∞‘ ¥Í¿∏∏È
         {
+          
 
             _rigid.velocity = new Vector2(_rigid.velocity.x, -1 * _rigid.velocity.y); // πÊ«‚ ¿¸»Ø
             Origin_angle.y *= -1f;
 
-            Debug.Log("dad" + _rigid.velocity);
-        }
-        if(collision.gameObject.CompareTag("GameOver"))
-        {
-            Debug.Log($"{collision.gameObject.name}");
+            //Debug.Log("dad" + _rigid.velocity);
         }
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("GameOver"))
+        {
+            //Debug.Log($"{collision.gameObject.name}");
+            GameManager.Instance.GameSet(collision.gameObject.GetComponent<BallCheck>().Player());
+        }
     }
 }

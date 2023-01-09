@@ -8,6 +8,9 @@ using System.Linq;
 [System.Serializable]
 public class AbilityCard
 {
+    [Header("카드 오브잭트")]
+    public Card _cardObj;
+
     public string NameExplain;
     public Sprite cardImg;
     [TextArea]
@@ -30,9 +33,9 @@ public class CardList : MonoBehaviour
     [Header("Items")]
     [SerializeField] public List<AbilityCard> _cardList = new List<AbilityCard>();
 
-    [SerializeField] Card A;
-    [SerializeField] Card B;
-    [SerializeField] Card C;
+    [SerializeField] GameObject A;
+    [SerializeField] GameObject B;
+    [SerializeField] GameObject C;
 
         public List<T> GetShuffleList<T>(List<T>_list)
     {
@@ -57,13 +60,18 @@ public class CardList : MonoBehaviour
     }
 
 
-    public void CardSelect(PlayerEnum pl)
+    public IEnumerator CardSelect(PlayerEnum pl)
     {
         _cardList = GetShuffleList(_cardList);
-
-        A.Set(_cardList[0].NameExplain, _cardList[0].cardImg, _cardList[0].Explain, pl);
-        B.Set(_cardList[1].NameExplain, _cardList[1].cardImg, _cardList[1].Explain, pl);
-        C.Set(_cardList[2].NameExplain, _cardList[2].cardImg, _cardList[2].Explain, pl);
+        GameObject obj = null;
+        obj = Instantiate(_cardList[0]._cardObj.gameObject, A.transform);
+        obj.GetComponent<Card>().Set(_cardList[0].NameExplain, _cardList[0].cardImg, _cardList[0].Explain, pl);
+        yield return null;
+        obj = Instantiate(_cardList[1]._cardObj.gameObject, B.transform);
+        obj.GetComponent<Card>().Set(_cardList[1].NameExplain, _cardList[1].cardImg, _cardList[1].Explain, pl);
+        yield return null;
+        obj = Instantiate(_cardList[2]._cardObj.gameObject, C.transform);
+        obj.GetComponent<Card>().Set(_cardList[2].NameExplain, _cardList[2].cardImg, _cardList[2].Explain, pl);
     }
 
 

@@ -19,19 +19,24 @@ public class GameManager : Singleton<GameManager>
 
     CardList cl;
     MapList map;
-    
+   
 
-    private void Awake()
-    {
-        cl = GameObject.FindObjectOfType<CardList>(true);
-        map = GameObject.FindObjectOfType<MapList>();
-    }
+    int A_WinScore = 0;
+    int B_WinScore = 0;
 
-    int A_WinScore;
-    int B_WinScore;
+    public Sprite A;
+    public Sprite B;
+
 
     public void Reset()
     {
+
+        cl = GameObject.FindObjectOfType<CardList>(true);
+        map = GameObject.FindObjectOfType<MapList>();
+
+        A = FindObjectOfType<CharacterSelect>().GetA();
+        B = FindObjectOfType<CharacterSelect>().GetB();
+
         A_WinScore = 0;
         B_WinScore = 0;
         a_ability1.Clear();
@@ -42,15 +47,17 @@ public class GameManager : Singleton<GameManager>
 
     public void GameStart()
     {
+        cl.gameObject.SetActive(false);
+
         map.Started();
     }
 
     public void GameSet(PlayerEnum pl)
     {
-        map.SelectEnd();
+        map.RoundEnd();
 
         cl.gameObject.SetActive(true);
-        cl.CardSelect(pl);
+        StartCoroutine(cl.CardSelect(pl));
         
     }
 
@@ -83,7 +90,6 @@ public class GameManager : Singleton<GameManager>
     }
     void PlayerListUp(List<BasePlayerAbility> t, PlayerInterrabter p)
     {
-        t.Sort();
         float speed = 1;
         Vector3 size = new Vector3(0.3f, 0.8f);
         float Anger = 0.15f;
@@ -121,11 +127,8 @@ public class GameManager : Singleton<GameManager>
     }
     void BallListUp(List<BaseBallAbility> t, Ball b, PlayerInterrabter pl)
     {
-        t.Sort();
         for (int i = 0; i < t.Count; i++)
             b.Setting(t[i].Ability, t[i].Speed(), t[i].Size(), t[i].angle().x, t[i].angle().y);
-        if(t.Count > 0)
-            b.SizeSetting();
 
         if (pl._playerEnum == PlayerEnum.A)
             b.LastSet(1, pl.Angler);

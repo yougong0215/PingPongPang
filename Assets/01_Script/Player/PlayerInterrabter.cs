@@ -36,6 +36,11 @@ public class PlayerInterrabter : MonoBehaviour
     {
         transform.localScale = new Vector3(0.3f, 1.4f, 1);
         GameManager.Instance.PlayerSetting(_playerEnum, this);
+        if(_playerEnum == PlayerEnum.A)
+            GetComponent<SpriteRenderer>().sprite = GameManager.Instance.A;
+        else
+            GetComponent<SpriteRenderer>().sprite = GameManager.Instance.B;
+        
     }
 
 
@@ -48,7 +53,7 @@ public class PlayerInterrabter : MonoBehaviour
             transform.position += new Vector3(0, -1) * Speed * Time.deltaTime;
 
 
-        Mathf.Clamp(transform.position.y, -4.3f, 4.3f);
+        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -4.3f, 4.3f), 0);
     }
 
     public void SpeedSetting(float speed)

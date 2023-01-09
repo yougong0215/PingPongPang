@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseBallAbility : MonoBehaviour
+public class BaseBallAbility : MonoBehaviour
 {
     [SerializeField] public BallEnum Ability = BallEnum.None;
 
