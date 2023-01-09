@@ -16,11 +16,15 @@ public class Ball : MonoBehaviour
     Rigidbody2D _rigid;
 
     [SerializeField] float Origin_speed = 3;
-    float Origin_size = 0.4f;
-    Vector2 Origin_angle = Vector2.zero;
+    [SerializeField] float Origin_size = 0.4f;
+    [SerializeField] Vector2 Origin_angle = Vector2.zero;
     [SerializeField]float Origin_Alter = 1;
 
-
+    public void Reset()
+    {
+        Origin_speed = 5;
+        Origin_size = 0.4f;
+    }
     private void OnEnable()
     {
         Origin_Alter = 1;
@@ -51,10 +55,6 @@ public class Ball : MonoBehaviour
                 _rigid.velocity = Origin_speed * Origin_angle;
             }
         }
-
-
-        transform.localScale = new Vector3(0.4f, 0.4f, 1) * Origin_Alter;
-        Origin_speed = 5 * Origin_Alter;
 
     }
 
@@ -117,7 +117,9 @@ public class Ball : MonoBehaviour
         {
             _rigid.velocity = Origin_speed * Angle_Changer;
         }
-        
+
+        transform.localScale = new Vector3(Origin_size, Origin_size, 1)* Origin_Alter;
+
         Origin_angle = Angle_Changer;
     }
     public void AlterSetting()
@@ -153,6 +155,7 @@ public class Ball : MonoBehaviour
     public void sizeSetting(float size)
     {
         this.Origin_size *= size;
+        transform.localScale = new Vector3(Origin_size, Origin_size, 1) * Origin_Alter;
     }
     public void AngleSetting(float a, float b)
     {
