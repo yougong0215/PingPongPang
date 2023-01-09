@@ -25,11 +25,12 @@ public class Card : MonoBehaviour
         this.pl = pl;
     }
 
-    public void Choose()
+    IEnumerator ch()
     {
-        for(int i = 4; i< transform.childCount; i++)
+        for (int i = 4; i < transform.childCount; i++)
         {
-            if(transform.GetChild(i).GetComponent<BaseBallAbility>())
+            yield return null;
+            if (transform.GetChild(i).GetComponent<BaseBallAbility>())
             {
                 if (pl == PlayerEnum.A)
                     GameManager.Instance.a_ability1.Add(transform.GetChild(i).GetComponent<BaseBallAbility>());
@@ -47,6 +48,11 @@ public class Card : MonoBehaviour
         }
 
         GameManager.Instance.GameStart();
+
+    }
+    public void Choose()
+    {
+        StartCoroutine(ch());
     }
 
 

@@ -68,10 +68,10 @@ public class GameManager : Singleton<GameManager>
         switch (pl)
         {
             case PlayerEnum.A:
-                PlayerListUp(a_ability2, p);
+                StartCoroutine(PlayerListUp(a_ability2, p));
                 break;
             case PlayerEnum.B:
-                PlayerListUp(b_ability2, p);
+                StartCoroutine(PlayerListUp(b_ability2, p));
                 break;
         }
     }
@@ -80,21 +80,22 @@ public class GameManager : Singleton<GameManager>
         switch (pl)
         {
             case PlayerEnum.A:
-                BallListUp(a_ability1, b, p);
+                StartCoroutine(BallListUp(a_ability1, b, p));
                 break;
             case PlayerEnum.B:
-                BallListUp(b_ability1, b, p);
+                StartCoroutine(BallListUp(b_ability1, b, p));
                 break;
         }
 
     }
-    void PlayerListUp(List<BasePlayerAbility> t, PlayerInterrabter p)
+    IEnumerator PlayerListUp(List<BasePlayerAbility> t, PlayerInterrabter p)
     {
         float speed = 1;
         Vector3 size = new Vector3(0.3f, 0.8f);
         float Anger = 0.15f;
         for (int i = 0; i < t.Count; i++)
         {
+            yield return null;
             switch (t[i].Ability)
             {
                 case PlayerAbilityEnum.None:
@@ -107,10 +108,10 @@ public class GameManager : Singleton<GameManager>
                     speed *= t[i].Speed();
                     break;
                 case PlayerAbilityEnum.SizeOne:
-                    size.x *= t[i].Size().x;
+                    size.x *= t[i].SizeXY().x;
                     break;
                 case PlayerAbilityEnum.SizeTwe:
-                    size.y *= t[i].Size().y;
+                    size.y *= t[i].SizeXY().y;
                     break;
                 case PlayerAbilityEnum.Angler:
                     Anger += t[i].Anglers();
@@ -125,10 +126,18 @@ public class GameManager : Singleton<GameManager>
             
         }
     }
-    void BallListUp(List<BaseBallAbility> t, Ball b, PlayerInterrabter pl)
+    IEnumerator BallListUp(List<BaseBallAbility> t, Ball b, PlayerInterrabter pl)
     {
+        b.Reset();
         for (int i = 0; i < t.Count; i++)
+        {
+            if(t[i].Ability == BallEnum.Size)
+            {
+                Debug.Log($"ÀÌ°Å {t[i].Size()}");
+            }
             b.Setting(t[i].Ability, t[i].Speed(), t[i].Size(), t[i].angle().x, t[i].angle().y);
+            yield return null;
+        }
 
         if (pl._playerEnum == PlayerEnum.A)
             b.LastSet(1, pl.Angler);
