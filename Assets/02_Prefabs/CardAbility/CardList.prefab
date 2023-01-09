@@ -88,6 +88,55 @@ MonoBehaviour:
     Explain: Speeding
     Overlap: 0
     CardLuck: 3
+  - _cardObj: {fileID: 6335590101669151057, guid: 55d911c1b8629a442b949a14a544afac, type: 3}
+    NameExplain: Size
+    cardImg: {fileID: -1775986853, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
+    ItemImg: {fileID: 21300000, guid: d96e0231f986e4449958c389a20bd85e, type: 3}
+    Explain: Speeding
+    Overlap: 0
+    CardLuck: 3
+  - _cardObj: {fileID: 6335590101669151057, guid: 55d911c1b8629a442b949a14a544afac, type: 3}
+    NameExplain: Size
+    cardImg: {fileID: -1775986853, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
+    ItemImg: {fileID: 21300000, guid: 4d7e5b9b0dedc81409b4eb60ccd2d5a1, type: 3}
+    Explain: Speeding
+    Overlap: 0
+    CardLuck: 3
+  - _cardObj: {fileID: 6335590101669151057, guid: 55d911c1b8629a442b949a14a544afac, type: 3}
+    NameExplain: Size
+    cardImg: {fileID: -1775986853, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
+    ItemImg: {fileID: 21300000, guid: 92e17c1e18c5f844c840d5ef0478e381, type: 3}
+    Explain: Speeding
+    Overlap: 0
+    CardLuck: 3
+  - _cardObj: {fileID: 6335590101669151057, guid: 55d911c1b8629a442b949a14a544afac, type: 3}
+    NameExplain: Size
+    cardImg: {fileID: -1657664934, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
+    ItemImg: {fileID: 21300000, guid: 2bcace8a2d8b58741b69b947b85b1d60, type: 3}
+    Explain: Speeding
+    Overlap: 0
+    CardLuck: 3
+  - _cardObj: {fileID: 6335590101669151057, guid: 55d911c1b8629a442b949a14a544afac, type: 3}
+    NameExplain: Size
+    cardImg: {fileID: -1657664934, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
+    ItemImg: {fileID: 21300000, guid: 905a4fc8bfd68884fa24e135145d0e7f, type: 3}
+    Explain: Speeding
+    Overlap: 0
+    CardLuck: 3
+  - _cardObj: {fileID: 6335590101669151057, guid: 55d911c1b8629a442b949a14a544afac, type: 3}
+    NameExplain: Size
+    cardImg: {fileID: 1442070603, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
+    ItemImg: {fileID: 21300000, guid: faf3a1812cd186a4aa9a6e2838c9ef16, type: 3}
+    Explain: Speeding
+    Overlap: 0
+    CardLuck: 3
+  - _cardObj: {fileID: 6335590101669151057, guid: 55d911c1b8629a442b949a14a544afac, type: 3}
+    NameExplain: Size
+    cardImg: {fileID: 1442070603, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
+    ItemImg: {fileID: 21300000, guid: 41eb62334d699bf4da1394549f90ca58, type: 3}
+    Explain: Speeding
+    Overlap: 0
+    CardLuck: 3
   A: {fileID: 72400454717153339}
   B: {fileID: 72400453633265378}
   C: {fileID: 72400454420412771}
