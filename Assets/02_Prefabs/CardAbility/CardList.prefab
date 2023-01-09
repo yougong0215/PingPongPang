@@ -48,19 +48,43 @@ MonoBehaviour:
   _cardList:
   - _cardObj: {fileID: 6335590101669151057, guid: 55d911c1b8629a442b949a14a544afac, type: 3}
     NameExplain: Big  Mushroom
-    cardImg: {fileID: 0}
+    cardImg: {fileID: 1366678786, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
+    ItemImg: {fileID: 21300000, guid: 431e121d6cdbb0b4293aecbe350d18de, type: 3}
     Explain: Speeding
     Overlap: 0
     CardLuck: 3
   - _cardObj: {fileID: 6335590101669151057, guid: 55d911c1b8629a442b949a14a544afac, type: 3}
     NameExplain: Alter
-    cardImg: {fileID: 0}
+    cardImg: {fileID: 1366678786, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
+    ItemImg: {fileID: 21300000, guid: fec22e916c9443548ac2900cf5c92598, type: 3}
     Explain: Speeding
     Overlap: 0
     CardLuck: 3
   - _cardObj: {fileID: 6335590101669151057, guid: 55d911c1b8629a442b949a14a544afac, type: 3}
     NameExplain: Size
-    cardImg: {fileID: 0}
+    cardImg: {fileID: 1366678786, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
+    ItemImg: {fileID: 21300000, guid: b51741ac168fcef4a9f7ee6194ae7e6b, type: 3}
+    Explain: Speeding
+    Overlap: 0
+    CardLuck: 3
+  - _cardObj: {fileID: 6335590101669151057, guid: 55d911c1b8629a442b949a14a544afac, type: 3}
+    NameExplain: Size
+    cardImg: {fileID: 1366678786, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
+    ItemImg: {fileID: 21300000, guid: 5b77e41548ded644a9a6042fdf7b0952, type: 3}
+    Explain: Speeding
+    Overlap: 0
+    CardLuck: 3
+  - _cardObj: {fileID: 6335590101669151057, guid: 55d911c1b8629a442b949a14a544afac, type: 3}
+    NameExplain: Size
+    cardImg: {fileID: -1775986853, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
+    ItemImg: {fileID: 21300000, guid: a7b133ed7301eba42a6ef28999b7f973, type: 3}
+    Explain: Speeding
+    Overlap: 0
+    CardLuck: 3
+  - _cardObj: {fileID: 6335590101669151057, guid: 55d911c1b8629a442b949a14a544afac, type: 3}
+    NameExplain: Size
+    cardImg: {fileID: -1775986853, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
+    ItemImg: {fileID: 21300000, guid: d96e0231f986e4449958c389a20bd85e, type: 3}
     Explain: Speeding
     Overlap: 0
     CardLuck: 3

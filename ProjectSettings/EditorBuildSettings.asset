@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/00_Scenes/StartScene.unity
+    path: Assets/01_Script/00_Scenes/StartScene.unity
     guid: cf751b50cae8b23479c6dd1efaff6615
   - enabled: 1
-    path: Assets/00_Scenes/VS_Game.unity
+    path: Assets/01_Script/00_Scenes/VS_Game.unity
     guid: 81915f923451c2a44b685d0329c1180e
   - enabled: 1
-    path: Assets/00_Scenes/VS_ModeSelect.unity
+    path: Assets/01_Script/00_Scenes/VS_ModeSelect.unity
     guid: 86f08979fe2de9e46980d08e43a1f8b2
   m_configObjects: {}
