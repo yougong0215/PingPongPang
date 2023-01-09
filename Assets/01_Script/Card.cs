@@ -15,12 +15,13 @@ public class Card : MonoBehaviour
 
     PlayerEnum pl;
 
-    public void Set( string t, Sprite img, string ex, PlayerEnum pl)
+    public void Set( string t, Sprite img, Sprite card, string ex, PlayerEnum pl)
     {
-       GetComponent<RectTransform>().position = transform.parent.GetComponent<RectTransform>().position;
+        GetComponent<RectTransform>().position = transform.parent.GetComponent<RectTransform>().position;
         GetComponent<RectTransform>().rotation = transform.parent.GetComponent<RectTransform>().rotation;
+        GetComponent<Image>().sprite = card;
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = t;
-        //transform.GetChild(1).GetComponent<Image>().sprite = img;
+        transform.GetChild(1).GetComponent<Image>().sprite = img;
         transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = ex;
         this.pl = pl;
     }
