@@ -13,6 +13,7 @@ public class AbilityCard
 
     public string NameExplain;
     public Sprite cardImg;
+    public Sprite ItemImg;
     [TextArea]
     public string Explain;
     [Header("중복 유무")]
@@ -65,13 +66,13 @@ public class CardList : MonoBehaviour
         _cardList = GetShuffleList(_cardList);
         GameObject obj = null;
         obj = Instantiate(_cardList[0]._cardObj.gameObject, A.transform);
-        obj.GetComponent<Card>().Set(_cardList[0].NameExplain, _cardList[0].cardImg, _cardList[0].Explain, pl);
+        obj.GetComponent<Card>().Set(_cardList[0].NameExplain, _cardList[0].ItemImg, _cardList[0].cardImg, _cardList[0].Explain, pl);
         yield return null;
         obj = Instantiate(_cardList[1]._cardObj.gameObject, B.transform);
-        obj.GetComponent<Card>().Set(_cardList[1].NameExplain, _cardList[1].cardImg, _cardList[1].Explain, pl);
+        obj.GetComponent<Card>().Set(_cardList[1].NameExplain, _cardList[1].ItemImg,_cardList[1].cardImg, _cardList[1].Explain, pl);
         yield return null;
         obj = Instantiate(_cardList[2]._cardObj.gameObject, C.transform);
-        obj.GetComponent<Card>().Set(_cardList[2].NameExplain, _cardList[2].cardImg, _cardList[2].Explain, pl);
+        obj.GetComponent<Card>().Set(_cardList[2].NameExplain, _cardList[2].ItemImg, _cardList[2].cardImg, _cardList[2].Explain, pl);
     }
 
 
