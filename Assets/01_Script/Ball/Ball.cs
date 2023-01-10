@@ -195,7 +195,7 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("GameOver"))
         {
 
-            GameManager.Instance.GameSet(collision.gameObject.GetComponent<BallCheck>().Player());
+            GameManager.Instance.PlayerRound(collision.gameObject.GetComponent<BallCheck>().Player());
         
         }
 

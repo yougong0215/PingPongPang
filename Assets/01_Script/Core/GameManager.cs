@@ -82,13 +82,18 @@ public class GameManager : Singleton<GameManager>
     {
         map.RoundEnd();
 
-        if (pl == PlayerEnum.A)
+        A_RoundWin = false;
+        B_RoundWin = false;
+
+        if (pl == PlayerEnum.B)
         {
             B_WinScore++;
+            map.PlayerBWin();
         }
         else
         {
             A_WinScore++;
+            map.PlayerAWin();
         }
 
         cl.gameObject.SetActive(true);
@@ -96,7 +101,42 @@ public class GameManager : Singleton<GameManager>
 
     }
 
+    public void A_SpriteAdd(Sprite spi)
+    {
+        map.PlayerAAdd(spi);
+    }
 
+    public void B_SpriteAdd(Sprite spi)
+    {
+        map.PlayerBAdd(spi);
+    }
+
+    public void PlayerRound(PlayerEnum pl)
+    {
+        if(A_RoundWin == true && pl == PlayerEnum.A)
+        {
+            GameSet(PlayerEnum.B);
+            return;
+        }
+        else if(B_RoundWin == true && pl == PlayerEnum.B)
+        {
+            GameSet(PlayerEnum.A);
+            return;
+        }
+
+        if(pl == PlayerEnum.A)
+        {
+            A_RoundWin = true;
+        }
+        else
+        {
+            B_RoundWin = true;
+        }
+
+        map.RoundEnd();
+        map.Started();
+
+    }
 
     public void PlayerSetting(PlayerEnum pl, PlayerInterrabter p)
     {
