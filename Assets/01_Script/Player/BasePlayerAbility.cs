@@ -11,20 +11,20 @@ public class BasePlayerAbility : MonoBehaviour
     [SerializeField] float Angler = 0.15f;
     [SerializeField] private float _sizeOne;
 
-    public virtual float Speed()
+    public float Speed()
     {
         return _speed;
     }
 
-    public virtual float Size()
+    public float Size()
     {
         return _sizeOne;
     }
-    public virtual Vector2 SizeXY()
+    public Vector2 SizeXY()
     {
         return _size;
     }
-    public virtual float Anglers()
+    public float Anglers()
     {
         return Angler;
     }

@@ -9,6 +9,10 @@ public class MapList : MonoBehaviour
 
     [SerializeField] List<GameObject> _mapList = new List<GameObject>();
 
+    public static int MapSpeed = 1;
+
+    float t;
+
     private void Start()
     {
         GameManager.Instance.Reset();
@@ -34,10 +38,12 @@ public class MapList : MonoBehaviour
 
     public void Started()
     {
+        this.t = 30;
         StartCoroutine(Startedd());
     }
     public IEnumerator Startedd()
     {
+
         GameObject t = Instantiate(BaseGame);
         t.transform.position = transform.position;
         Base = t;
@@ -52,6 +58,19 @@ public class MapList : MonoBehaviour
         o.transform.position = transform.position;
 
         //_mapList.Remove(_mapList[0]);
+    }
+
+    private void Update()
+    {
+        t -= Time.deltaTime;
+        if(t < 0)
+        {
+            MapSpeed = 3;
+        }
+        else
+        {
+            MapSpeed = 1;
+        }
     }
 
     public void RoundEnd()
