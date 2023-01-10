@@ -46,7 +46,7 @@ public class PlayerInterrabter : MonoBehaviour
     {
     }
 
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(GameManager.Instance.TeamSetting(gameObject));
         if (twin == false)

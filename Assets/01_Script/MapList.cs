@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapList : MonoBehaviour
 {
@@ -8,6 +9,15 @@ public class MapList : MonoBehaviour
     [SerializeField] GameObject BaseGame;
 
     [SerializeField] List<GameObject> _mapList = new List<GameObject>();
+
+    [Header("´É·Â")]
+    [SerializeField] public GameObject playerA;
+    [SerializeField] public GameObject playerB;
+    [SerializeField] public Image baseimg;
+
+    [SerializeField] public Image basewinimg;
+    [SerializeField] public GameObject playerAWin;
+    [SerializeField] public GameObject playerBWin;
 
     public static int MapSpeed = 1;
 
@@ -21,6 +31,31 @@ public class MapList : MonoBehaviour
 
     GameObject map;
     GameObject Base;
+
+    public void PlayerAAdd(Sprite spi)
+    {
+        GameObject obj = Instantiate(baseimg.gameObject, playerA.transform);
+        obj.transform.GetChild(0).GetComponent<Image>().sprite = spi;
+    }
+
+    public void PlayerBAdd(Sprite spi)
+    {
+        GameObject obj = Instantiate(baseimg.gameObject, playerB.transform);
+        obj.transform.GetChild(0).GetComponent<Image>().sprite = spi;
+        obj.transform.localEulerAngles = new Vector3(0, 0, 180);
+    }
+
+    public void PlayerAWin()
+    {
+        GameObject obj = Instantiate(basewinimg.gameObject, playerAWin.transform);
+    }
+
+    public void PlayerBWin()
+    {
+        GameObject obj = Instantiate(basewinimg.gameObject, playerBWin.transform);
+        obj.transform.localEulerAngles = new Vector3(0, 0, 180);
+    }
+
 
     public List<T> GetShuffleList<T>(List<T> _list)
     {

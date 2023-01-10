@@ -15,7 +15,9 @@ public class Card : MonoBehaviour
 
     PlayerEnum pl;
     bool Choosed = false;
-    public void Set( string t, Sprite img, Sprite card, string ex, PlayerEnum pl, bool Choosed  = false)
+    Sprite _spriteSave;
+
+    public void Set( string t, Sprite img, Sprite card, string ex, PlayerEnum pl, Sprite ab, bool Choosed  = false)
     {
         GetComponent<RectTransform>().position = transform.parent.GetComponent<RectTransform>().position;
         GetComponent<RectTransform>().rotation = transform.parent.GetComponent<RectTransform>().rotation;
@@ -25,10 +27,22 @@ public class Card : MonoBehaviour
         transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = ex;
         this.pl = pl;
         this.Choosed = Choosed;
+        _spriteSave = ab;
     }
 
     IEnumerator ch()
     {
+        if(pl == PlayerEnum.A)
+        {
+            GameManager.Instance.A_SpriteAdd(_spriteSave);
+        }
+        else
+        {
+            GameManager.Instance.B_SpriteAdd(_spriteSave);
+
+        }
+
+
         for (int i = 3; i < transform.childCount; i++)
         {
             if (transform.GetChild(i).GetComponent<BaseBallAbility>())
