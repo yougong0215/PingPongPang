@@ -22,9 +22,12 @@ public class GameManager : Singleton<GameManager>
     CardList cl;
     MapList map;
 
-
+    public static bool AIMod = false;
     int A_WinScore = 0;
     int B_WinScore = 0;
+
+    bool A_RoundWin = false;
+    bool B_RoundWin = false;
 
     public Sprite A;
     public Sprite B;
@@ -45,6 +48,27 @@ public class GameManager : Singleton<GameManager>
         a_ability2.Clear();
         b_ability1.Clear();
         b_ability2.Clear();
+    }
+
+    public void GameInit1()
+    {
+        GameManager.Instance.Reset();
+        cl.gameObject.SetActive(true);
+
+        
+        StartCoroutine(cl.CardSelect(PlayerEnum.A, true));
+    }
+
+    public void GameSet2()
+    {
+        StartCoroutine(GameInit2());
+    }
+
+    public IEnumerator GameInit2()
+    {
+        yield return new WaitForSeconds(0.1f);
+        cl.gameObject.SetActive(true);
+        StartCoroutine(cl.CardSelect(PlayerEnum.B));
     }
 
     public void GameStart()

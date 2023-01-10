@@ -113,7 +113,10 @@ public class Ball : MonoBehaviour
 
         Angle_Changer.Normalize();
         Debug.Log($"{Dir} * {Origin_speed} * {Angle_Changer.y} * {Origin_Alter}");
-
+        if (pl.toza == true)
+        {
+            Origin_speed *= pl.TOZAZA;
+        }
         if (pl.MoonGwa == false)
         {
             if (Origin_Alter < 1)
@@ -128,18 +131,18 @@ public class Ball : MonoBehaviour
         }
         else
         {
+            if (transform.position.x > 0)
+            {
+                _rigid.velocity = Origin_speed * new Vector3(Random.Range(-2f, -0.3f), Random.Range(-1f, 1f), 0).normalized * MapList.MapSpeed;
 
-            _rigid.velocity = Origin_speed * new Vector3(Random.Range(-2f, -0.3f), Random.Range(-1f, 1f), 0).normalized * MapList.MapSpeed;
+            }
+            else
+                _rigid.velocity = Origin_speed * new Vector3(Random.Range(0.3f, 2f), Random.Range(-1f, 1f), 0).normalized * MapList.MapSpeed;
 
         }
 
 
         transform.localScale = new Vector3(Origin_size, Origin_size, 1)* Origin_Alter;
-
-        if(pl.toza == true)
-        {
-            Origin_speed *= pl.TOZAZA;
-        }
 
         Origin_angle = Angle_Changer;
     }
@@ -201,7 +204,7 @@ public class Ball : MonoBehaviour
         {
             if (_rigid.velocity.y >= 0)
             {
-                _rigid.velocity = new Vector2(_rigid.velocity.x, -1 * _rigid.velocity.y); // 방향 전환
+                _rigid.velocity = new Vector2(_rigid.velocity.x, -1 * _rigid.velocity.y - 1); // 방향 전환
                 Origin_angle.y *= -1f;
             }
         }
@@ -209,7 +212,7 @@ public class Ball : MonoBehaviour
         {
             if (_rigid.velocity.y <= 0)
             {
-                _rigid.velocity = new Vector2(_rigid.velocity.x, -1 * _rigid.velocity.y); // 방향 전환
+                _rigid.velocity = new Vector2(_rigid.velocity.x, -1 * _rigid.velocity.y + 1); // 방향 전환
                 Origin_angle.y *= -1f;
             }
         }
