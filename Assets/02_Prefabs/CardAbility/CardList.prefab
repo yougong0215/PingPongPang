@@ -111,15 +111,6 @@ MonoBehaviour:
       \uBE68\uB77C\uC9C4\uB2E4\n\u3147\u3134"
     Overlap: 0
     CardLuck: 3
-  - _cardObj: {fileID: 3218184519694212034, guid: 1c87802f14ffae74eac37577271b34de, type: 3}
-    NameExplain: MoonGWA
-    cardImg: {fileID: -1657664934, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
-    ItemImg: {fileID: 21300000, guid: 905a4fc8bfd68884fa24e135145d0e7f, type: 3}
-    Explain: "\uACFC\uD559\uB3C4 \uC218\uD559\uB3C4 \uBAA8\uB450 \uC2EB\uC5B4\n\uB09C
-      \uBB3C\uB9AC\uB97C \uBB34\uC2DC\uD55C\uB2E4!\n\uACF5\uC774 \uC54C\uC218 \uC5C6\uB294
-      \uACF3\uC73C\uB85C \uD284\uB2E4"
-    Overlap: 0
-    CardLuck: 3
   - _cardObj: {fileID: 3218184519694212034, guid: f9eff027f4e399642800eb924f885b5e, type: 3}
     NameExplain: Double Double
     cardImg: {fileID: 1442070603, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
@@ -134,6 +125,13 @@ MonoBehaviour:
     ItemImg: {fileID: 21300000, guid: faf3a1812cd186a4aa9a6e2838c9ef16, type: 3}
     Explain: "\uC774\uAC70\uCC38 \uAC1C\uD310\uC774\uB124\n\uACF5\uC774 \uBD84\uC5F4\uD569\uB2C8\uB2E4\n(
       \uCD5C\uB300 4\uBC88 )"
+    Overlap: 0
+    CardLuck: 3
+  - _cardObj: {fileID: 3218184519694212034, guid: 1c87802f14ffae74eac37577271b34de, type: 3}
+    NameExplain: MoonGWA
+    cardImg: {fileID: 1442070603, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
+    ItemImg: {fileID: 21300000, guid: 905a4fc8bfd68884fa24e135145d0e7f, type: 3}
+    Explain: "\uBB34\uB1CC\uACFC"
     Overlap: 0
     CardLuck: 3
   _cardListed: []

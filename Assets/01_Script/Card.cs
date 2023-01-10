@@ -14,8 +14,8 @@ public class Card : MonoBehaviour
     // 4번 카드 베이스 색상
 
     PlayerEnum pl;
-
-    public void Set( string t, Sprite img, Sprite card, string ex, PlayerEnum pl)
+    bool Choosed = false;
+    public void Set( string t, Sprite img, Sprite card, string ex, PlayerEnum pl, bool Choosed  = false)
     {
         GetComponent<RectTransform>().position = transform.parent.GetComponent<RectTransform>().position;
         GetComponent<RectTransform>().rotation = transform.parent.GetComponent<RectTransform>().rotation;
@@ -24,6 +24,7 @@ public class Card : MonoBehaviour
         transform.GetChild(1).GetComponent<Image>().sprite = img;
         transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = ex;
         this.pl = pl;
+        this.Choosed = Choosed;
     }
 
     IEnumerator ch()
@@ -52,7 +53,14 @@ public class Card : MonoBehaviour
                 GameManager.Instance.All.Add(transform.GetChild(i).GetComponent<ALLAbility>());
             }
         }
-        GameManager.Instance.GameStart();
+
+        if(Choosed == false)
+            GameManager.Instance.GameStart();
+        else
+        {
+            Choosed = false;
+            GameManager.Instance.GameSet2();
+        }
         
     }
     public void Choose()
