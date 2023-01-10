@@ -17,9 +17,11 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public List<BaseBallAbility> b_ability1 = new List<BaseBallAbility>();
     [SerializeField] public List<BasePlayerAbility> b_ability2 = new List<BasePlayerAbility>();
 
+    [Header("TeamAll")]
+    [SerializeField] public List<ALLAbility> All = new List<ALLAbility>();
     CardList cl;
     MapList map;
-   
+
 
     int A_WinScore = 0;
     int B_WinScore = 0;
@@ -56,9 +58,18 @@ public class GameManager : Singleton<GameManager>
     {
         map.RoundEnd();
 
+        if (pl == PlayerEnum.A)
+        {
+            B_WinScore++;
+        }
+        else
+        {
+            A_WinScore++;
+        }
+
         cl.gameObject.SetActive(true);
         StartCoroutine(cl.CardSelect(pl));
-        
+
     }
 
 
@@ -88,10 +99,37 @@ public class GameManager : Singleton<GameManager>
         }
 
     }
+
+    public IEnumerator TeamSetting(GameObject p)
+    {
+        for (int i = 0; i < All.Count; i++)
+        {
+            yield return null;
+            switch (All[i].Ability)
+            {
+                case ALL.PlayerSpeed:
+                    if (p.GetComponent<PlayerInterrabter>()) 
+                        p.GetComponent<PlayerInterrabter>().Speed *= All[i].ValueReturn();
+                    break;
+                case ALL.PlayerSize:
+                    if (p.GetComponent<PlayerInterrabter>())
+                        p.transform.localScale *= All[i].ValueReturn();
+                    break;
+                case ALL.BallSpeed:
+                    if (p.GetComponent<Ball>())
+                        p.GetComponent<Ball>().SpeedSetting(All[i].ValueReturn());
+                    break;
+                case ALL.BallSize:
+                    if (p.GetComponent<Ball>())
+                        p.transform.localScale *= All[i].ValueReturn();
+                    break;
+            }
+        }
+    }
     IEnumerator PlayerListUp(List<BasePlayerAbility> t, PlayerInterrabter p)
     {
-        float speed = 1;
-        Vector3 size = new Vector3(0.3f, 0.8f);
+        float speed = 5;
+        Vector3 size = new Vector3(0.3f, 1.4f, 1);
         float Anger = 0.15f;
         for (int i = 0; i < t.Count; i++)
         {
@@ -116,14 +154,30 @@ public class GameManager : Singleton<GameManager>
                 case PlayerAbilityEnum.Angler:
                     Anger += t[i].Anglers();
                     break;
+                case PlayerAbilityEnum.Tozaza:
+                    p.toza = true;
+                    break;
+                case PlayerAbilityEnum.MoonGwa:
+                    p.MoonGwa = true;
+                    break;
+                case PlayerAbilityEnum.Twin:
+                    p.twin = true;
+                    break;
             }
+            Debug.Log(speed);
         }
+        if (p.twin == true)
+        {
+            size *= 0.5f;
+            speed *= 0.5f;
+        }
+
         if (t.Count > 0)
         {
             p.transform.localScale = size;
             p.Angler = Anger;
             p.SpeedSetting(speed);
-            
+
         }
     }
     IEnumerator BallListUp(List<BaseBallAbility> t, Ball b, PlayerInterrabter pl)
@@ -131,7 +185,7 @@ public class GameManager : Singleton<GameManager>
         b.Reset();
         for (int i = 0; i < t.Count; i++)
         {
-            if(t[i].Ability == BallEnum.Size)
+            if (t[i].Ability == BallEnum.Size)
             {
                 Debug.Log($"ÀÌ°Å {t[i].Size()}");
             }
@@ -140,8 +194,18 @@ public class GameManager : Singleton<GameManager>
         }
 
         if (pl._playerEnum == PlayerEnum.A)
-            b.LastSet(1, pl.Angler);
+            b.LastSet(1, pl.Angler, pl);
         else
-            b.LastSet(-1, pl.Angler);
+            b.LastSet(-1, pl.Angler, pl);
+
+
+        if (pl.twin == true)
+        {
+            pl.TOZAZA += 0.25f * 0.5f;
+        }
+        else
+        {
+            pl.TOZAZA += 0.25f;
+        }
     }
 }

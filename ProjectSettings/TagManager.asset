@@ -9,6 +9,8 @@ TagManager:
   - Map
   - Ball
   - GameOver
+  - MapUp
+  - MapDown
   layers:
   - Default
   - TransparentFX

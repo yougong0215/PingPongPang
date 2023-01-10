@@ -28,28 +28,32 @@ public class Card : MonoBehaviour
 
     IEnumerator ch()
     {
-        for (int i = 4; i < transform.childCount; i++)
+        for (int i = 3; i < transform.childCount; i++)
         {
-            yield return null;
             if (transform.GetChild(i).GetComponent<BaseBallAbility>())
             {
+                yield return null;
                 if (pl == PlayerEnum.A)
                     GameManager.Instance.a_ability1.Add(transform.GetChild(i).GetComponent<BaseBallAbility>());
                 if (pl == PlayerEnum.B)
                     GameManager.Instance.b_ability1.Add(transform.GetChild(i).GetComponent<BaseBallAbility>());
             }
-
             if (transform.GetChild(i).GetComponent<BasePlayerAbility>())
             {
+                yield return null;
                 if (pl == PlayerEnum.A)
                     GameManager.Instance.a_ability2.Add(transform.GetChild(i).GetComponent<BasePlayerAbility>());
                 if (pl == PlayerEnum.B)
                     GameManager.Instance.b_ability2.Add(transform.GetChild(i).GetComponent<BasePlayerAbility>());
             }
+            if(transform.GetChild(i).GetComponent<ALLAbility>())
+            {
+                yield return null;
+                GameManager.Instance.All.Add(transform.GetChild(i).GetComponent<ALLAbility>());
+            }
         }
-
         GameManager.Instance.GameStart();
-
+        
     }
     public void Choose()
     {

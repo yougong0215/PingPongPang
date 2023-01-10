@@ -15,7 +15,10 @@ public enum PlayerAbilityEnum
     SizeOne,
     SizeTwe,
     Speed,
-    Angler
+    Angler,
+    Tozaza,
+    MoonGwa,
+    Twin
 }
 
 public class PlayerInterrabter : MonoBehaviour
@@ -27,20 +30,57 @@ public class PlayerInterrabter : MonoBehaviour
     [SerializeField] KeyCode Up;
     [SerializeField] KeyCode Down;
 
+    public float TOZAZA = 0.5f;
+    public bool toza = false;
+    public bool MoonGwa = false;
+    public bool twin = false;
+    public int twinValue = 1;
+
+
     public float Angler = 4f;
 
 
     public float Speed = 1;
 
-    private void OnEnable()
+    private void Awake()
     {
+    }
+
+    private void Start()
+    {
+        StartCoroutine(GameManager.Instance.TeamSetting(gameObject));
+        if (twin == false)
+            StartCoroutine(twins());
+
         transform.localScale = new Vector3(0.3f, 1.4f, 1);
         GameManager.Instance.PlayerSetting(_playerEnum, this);
         if(_playerEnum == PlayerEnum.A)
-            GetComponent<SpriteRenderer>().sprite = GameManager.Instance.A;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameManager.Instance.A;
         else
-            GetComponent<SpriteRenderer>().sprite = GameManager.Instance.B;
-        
+            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameManager.Instance.B;
+    }
+
+    IEnumerator twins()
+    {
+        yield return null;
+        yield return null;
+        yield return null;
+        if (twin == true)
+        {
+            GameObject obj = Instantiate(gameObject);
+
+            obj.transform.position = transform.position;
+            obj.transform.GetChild(0).GetComponent<SpriteRenderer>().flipY = true;
+            obj.GetComponent<PlayerInterrabter>().twinValue = -1;
+            obj.transform.parent = transform.parent;
+            obj.transform.position += new Vector3(0.01f, 0, 0);
+        }
+    }
+    IEnumerator BoxColliderONOFF()
+    {
+        GetComponent<BoxCollider2D>().enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        GetComponent<BoxCollider2D>().enabled = true;
     }
 
 
@@ -48,9 +88,9 @@ public class PlayerInterrabter : MonoBehaviour
     void Update()
     {
         if(Input.GetKey(Up))
-            transform.position += new Vector3(0, 1) * Speed * Time.deltaTime;
+            transform.position += new Vector3(0, twinValue) * Speed * Time.deltaTime;
         if (Input.GetKey(Down))
-            transform.position += new Vector3(0, -1) * Speed * Time.deltaTime;
+            transform.position += new Vector3(0, -twinValue) * Speed * Time.deltaTime;
 
 
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -4.3f, 4.3f), 0);
@@ -67,6 +107,7 @@ public class PlayerInterrabter : MonoBehaviour
 
             SetAbility(collision.gameObject.GetComponent<Ball>());
             Debug.Log("닿음");
+            StartCoroutine(BoxColliderONOFF());
         }
     }
 
