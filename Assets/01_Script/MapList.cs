@@ -15,9 +15,7 @@ public class MapList : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.Reset();
-
-        Started();
+        GameManager.Instance.GameInit1();
     }
 
 

@@ -61,7 +61,7 @@ public class CardList : MonoBehaviour
     }
 
 
-    public IEnumerator CardSelect(PlayerEnum pl)
+    public IEnumerator CardSelect(PlayerEnum pl, bool Choose = false)
     {
 
         for (int i = 0; i < _cardList.Count; i++)
@@ -77,15 +77,17 @@ public class CardList : MonoBehaviour
         yield return null;
         GameObject obj = null;
         obj = Instantiate(_cardListed[0]._cardObj.gameObject, A.transform);
-        obj.GetComponent<Card>().Set(_cardListed[0].NameExplain, _cardListed[0].ItemImg, _cardListed[0].cardImg, _cardListed[0].Explain, pl);
+        obj.GetComponent<Card>().Set(_cardListed[0].NameExplain, _cardListed[0].ItemImg, _cardListed[0].cardImg, _cardListed[0].Explain, pl, Choose);
         yield return null;
         obj = Instantiate(_cardListed[1]._cardObj.gameObject, B.transform);
-        obj.GetComponent<Card>().Set(_cardListed[1].NameExplain, _cardListed[1].ItemImg, _cardListed[1].cardImg, _cardListed[1].Explain, pl);
+        obj.GetComponent<Card>().Set(_cardListed[1].NameExplain, _cardListed[1].ItemImg, _cardListed[1].cardImg, _cardListed[1].Explain, pl, Choose);
         yield return null;
         obj = Instantiate(_cardListed[2]._cardObj.gameObject, C.transform);
-        obj.GetComponent<Card>().Set(_cardListed[2].NameExplain, _cardListed[2].ItemImg, _cardListed[2].cardImg, _cardListed[2].Explain, pl);
+        obj.GetComponent<Card>().Set(_cardListed[2].NameExplain, _cardListed[2].ItemImg, _cardListed[2].cardImg, _cardListed[2].Explain, pl, Choose);
 
         _cardListed.Clear();
+
+        
     }
 
 

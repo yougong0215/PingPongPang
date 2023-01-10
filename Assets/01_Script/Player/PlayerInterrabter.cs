@@ -76,12 +76,7 @@ public class PlayerInterrabter : MonoBehaviour
             obj.transform.position += new Vector3(0.01f, 0, 0);
         }
     }
-    IEnumerator BoxColliderONOFF()
-    {
-        GetComponent<BoxCollider2D>().enabled = false;
-        yield return new WaitForSeconds(0.1f);
-        GetComponent<BoxCollider2D>().enabled = true;
-    }
+
 
 
     // Update is called once per frame
@@ -107,7 +102,7 @@ public class PlayerInterrabter : MonoBehaviour
 
             SetAbility(collision.gameObject.GetComponent<Ball>());
             Debug.Log("닿음");
-            StartCoroutine(BoxColliderONOFF());
+            //StartCoroutine(BoxColliderONOFF());
         }
     }
 
