@@ -16,7 +16,7 @@ public class DoomChit : MonoBehaviour
         {
             transform.DOMoveX(transform.position.x - 1200, gotime + 0.4f);
         }
-        a.gameObject.SetActive(false);
+        //a.gameObject.SetActive(false);
     }
 
     private void Start()
