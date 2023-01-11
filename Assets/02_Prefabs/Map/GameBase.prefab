@@ -328,7 +328,7 @@ MonoBehaviour:
   twinValue: 1
   Angler: 0.15
   Speed: 5
-  MapGimicspeed: 0
+  MapGimicspeed: 1
   Sprite: {fileID: 4726214872092462964}
 --- !u!61 &5390288238747202392
 BoxCollider2D:
@@ -749,7 +749,7 @@ MonoBehaviour:
   twinValue: 1
   Angler: 0.15
   Speed: 5
-  MapGimicspeed: 0
+  MapGimicspeed: 1
   Sprite: {fileID: 8164573598200316367}
 --- !u!61 &5390288239984175340
 BoxCollider2D:
