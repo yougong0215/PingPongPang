@@ -11,6 +11,9 @@ TagManager:
   - GameOver
   - MapUp
   - MapDown
+  - PlayerAttacking
+  - MapGimicSpeed
+  - MapGimicInfin
   layers:
   - Default
   - TransparentFX
