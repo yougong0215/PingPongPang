@@ -32,6 +32,8 @@ public class PlayerInterrabter : MonoBehaviour
 
     public bool PlayerInfin = false;
 
+    PlayerInterrabter alter;
+
 
     public float TOZAZA = 0.5f;
     public bool toza = false;
@@ -77,6 +79,8 @@ public class PlayerInterrabter : MonoBehaviour
             obj.GetComponent<PlayerInterrabter>().twinValue = -1;
             obj.transform.parent = transform.parent;
             obj.transform.position += new Vector3(0.01f, 0, 0);
+
+            alter = obj.GetComponent<PlayerInterrabter>();
         }
     }
 
@@ -85,6 +89,8 @@ public class PlayerInterrabter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if(Input.GetKey(Up))
             transform.position += new Vector3(0, twinValue) * Speed * Time.deltaTime;
         if (Input.GetKey(Down))
@@ -93,10 +99,14 @@ public class PlayerInterrabter : MonoBehaviour
         if(PlayerInfin == true)
         {
             Sprite.SetActive(true);
+            if (alter != null)
+                alter.PlayerInfin = true;
         }
-        else
+        else 
         {
             Sprite.SetActive(false);
+            if (alter != null)
+                alter.PlayerInfin = false;
         }
 
 

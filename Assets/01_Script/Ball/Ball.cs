@@ -44,7 +44,20 @@ public class Ball : MonoBehaviour
         {
             Origin_angle = new Vector2(-1, Random.Range(-1f, 1f));
         }
-        if(Origin_Alter == 1)
+
+        if (transform.position.x > 0)
+        {
+            if (Origin_angle.x < 0)
+                Origin_angle *= -1;
+        }
+        else
+        {
+            if (Origin_angle.x > 0)
+                Origin_angle *= -1;
+        }
+
+
+        if (Origin_Alter == 1)
             StartCoroutine(StartBox());
         Origin_angle.Normalize();
 
@@ -54,7 +67,7 @@ public class Ball : MonoBehaviour
     IEnumerator StartBox()
     {
         GetComponent<BoxCollider2D>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.4f);
         GetComponent<BoxCollider2D>().enabled = true;
     }
 
@@ -134,7 +147,16 @@ public class Ball : MonoBehaviour
             Origin_Alter -= 0.2f;
             Ball b = Instantiate(this);
 
-            b.Origin_angle *= -1;
+            if(transform.position.x > 0)
+            {
+                if(b.Origin_angle.x < 0)
+                    b.Origin_angle *= -1;
+            }
+            else
+            {
+                if (b.Origin_angle.x > 0)
+                    b.Origin_angle *= -1;
+            }
 
             b.Origin_Alter = Origin_Alter;
 
@@ -183,6 +205,21 @@ public class Ball : MonoBehaviour
 
         }
 
+        if(collision.gameObject.CompareTag("MapLeft"))
+        {
+            if (transform.position.x >= 0)
+            {
+                if(Origin_angle.x > 0)
+                    Origin_angle.x *= -1;
+            }
+            else
+            {
+                if (Origin_angle.x < 0)
+                    Origin_angle.x *= -1;
+            }
+            Origin_angle.Normalize();
+        }
+
         if (collision.gameObject.CompareTag("MapUp")) // À­º® ¾Æ·¿º® ¿¡°Ô ´êÀ¸¸é
         {
             if (_rigid.velocity.y >= 0)
@@ -205,6 +242,20 @@ public class Ball : MonoBehaviour
         }
 
 
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("water"))
+        {
+            mapSpeed = 0.75f;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("water"))
+            mapSpeed = 1f;
     }
 
 }
