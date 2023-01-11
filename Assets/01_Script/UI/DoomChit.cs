@@ -6,7 +6,7 @@ using TMPro;
 
 public class DoomChit : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI a = null;
+    [SerializeField] GameObject a = null;
     [SerializeField] Color col;
     [SerializeField] bool IntroUIMove;
     [SerializeField] float gotime = 1.2f;
@@ -16,6 +16,7 @@ public class DoomChit : MonoBehaviour
         {
             transform.DOMoveX(transform.position.x - 1200, gotime + 0.4f);
         }
+        a.gameObject.SetActive(false);
     }
 
     private void Start()
@@ -37,12 +38,12 @@ public class DoomChit : MonoBehaviour
 
     public void Up()
     {
-        a.GetComponent<TextMeshProUGUI>().color = col;
+        a.gameObject.SetActive(true);
     }
 
     public void Down()
     {
-        a.GetComponent<TextMeshProUGUI>().color = new Color(1,1,1);
+        a.gameObject.SetActive(false);
     }
 
 }
