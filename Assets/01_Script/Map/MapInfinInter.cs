@@ -16,7 +16,8 @@ public class MapInfinInter : MonoBehaviour
         if(HitNum <= 0)
         {
             pl.PlayerInfin = true;
-            Destroy(gameObject);
+            GetComponent<AudioSource>().Play();
+            transform.position += new Vector3(0, 1000, 0);
         }
     }
     private void Update()

@@ -42,6 +42,16 @@ public class CharacterSelect : MonoBehaviour
 
 
     }
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            if(GameObject.Find("Character_Canvas"))
+            {
+                Destroy(this.gameObject);
+            }
+        }
+    }
 
     public Sprite GetA()
     {
