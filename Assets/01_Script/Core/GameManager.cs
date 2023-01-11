@@ -22,6 +22,9 @@ public class GameManager : Singleton<GameManager>
     CardList cl;
     MapList map;
 
+    public GameObject UserA;
+    public GameObject UserB;
+
     public static bool AIMod = false;
     int A_WinScore = 0;
     int B_WinScore = 0;
@@ -79,6 +82,8 @@ public class GameManager : Singleton<GameManager>
         cl.gameObject.SetActive(false);
 
         map.Started();
+
+
     }
 
     public void GameSet(PlayerEnum pl)
