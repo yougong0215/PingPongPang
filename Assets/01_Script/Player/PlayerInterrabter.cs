@@ -51,8 +51,14 @@ public class PlayerInterrabter : MonoBehaviour
 
     [SerializeField] GameObject Sprite;
 
+    Rigidbody2D _rigid;
+    bool Ice = false;
+
+    Camera cam;
+
     private void OnEnable()
     {
+        cam = Camera.main;
         StartCoroutine(GameManager.Instance.TeamSetting(gameObject));
         if (twin == false)
             StartCoroutine(twins());
@@ -63,6 +69,18 @@ public class PlayerInterrabter : MonoBehaviour
             transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameManager.Instance.A;
         else
             transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameManager.Instance.B;
+        _rigid = GetComponent<Rigidbody2D>();
+
+        StartCoroutine(I());
+    }
+
+    IEnumerator I()
+    {
+        yield return new WaitForSeconds(0.2f);
+        if (GameObject.Find("12_IceRoad_Map(Clone)"))
+        {
+            Ice = true;
+        }
     }
 
     IEnumerator twins()
@@ -83,18 +101,52 @@ public class PlayerInterrabter : MonoBehaviour
             alter = obj.GetComponent<PlayerInterrabter>();
         }
     }
-
+    float t = 0;
 
 
     // Update is called once per frame
     void Update()
     {
 
+        if(Ice == false)
+        {
 
-        if (Input.GetKey(Up))
-            transform.position += new Vector3(0, twinValue) * MapGimicspeed * Speed * Time.deltaTime;
-        if (Input.GetKey(Down))
-            transform.position += new Vector3(0, -twinValue) * MapGimicspeed * Speed * Time.deltaTime;
+            if (Input.GetKey(Up))
+                transform.position += new Vector3(0, twinValue) * MapGimicspeed * Speed * Time.deltaTime;
+            if (Input.GetKey(Down))
+                transform.position += new Vector3(0, -twinValue) * MapGimicspeed * Speed * Time.deltaTime;
+        }
+        else
+        {
+
+            transform.position = 
+                Vector3.Lerp(transform.position, transform.position + new Vector3(0, t * twinValue, 0) , 10 * Time.deltaTime);
+            if (Input.GetKey(Up))
+            {
+                t += Time.deltaTime;
+            }
+            else if (Input.GetKey(Down))
+            {
+                t -= Time.deltaTime;
+            }
+
+            if (!Input.GetKey(Up) && t > 0)
+            {
+                t -= Time.deltaTime;
+            }
+            if (!Input.GetKey(Down) && t < 0)
+            {
+                t += Time.deltaTime;
+            }
+            if(t > 1)
+            {
+                t = 1;
+            }
+            if(t < -1)
+            {
+                t = -1;
+            }
+        }
 
         if (PlayerInfin == true)
         {
@@ -110,7 +162,21 @@ public class PlayerInterrabter : MonoBehaviour
         }
 
 
-        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -4.3f, 4.3f), 0);
+        Vector3 pos = cam.WorldToViewportPoint(transform.position);
+
+
+
+        if (pos.x < 0.1f) pos.x = 0.1f;
+
+        if (pos.x > 0.9f) pos.x = 0.9f;
+
+        if (pos.y < 0.1f) pos.y = 0.1f;
+
+        if (pos.y > 0.9f) pos.y = 0.9f;
+
+
+
+        transform.position = cam.ViewportToWorldPoint(pos);
     }
 
     public void SpeedSetting(float speed)

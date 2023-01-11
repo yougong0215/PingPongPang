@@ -15,12 +15,14 @@ public class Ball : MonoBehaviour
 {
     Rigidbody2D _rigid;
 
-    [SerializeField] float Origin_speed = 3;
+    [SerializeField] public float Origin_speed = 3;
     [SerializeField] float Origin_size = 0.4f;
-    [SerializeField] Vector2 Origin_angle = Vector2.zero;
+    [SerializeField] public Vector2 Origin_angle = Vector2.zero;
     [SerializeField] float Origin_Alter = 1;
 
     public float mapSpeed = 1;
+
+    public float TrickSter = 1;
 
     public PlayerInterrabter pl;
 
@@ -74,7 +76,7 @@ public class Ball : MonoBehaviour
     private void Update()
     {
 
-        _rigid.velocity = Origin_speed * Origin_angle * MapList.MapSpeed * mapSpeed * Origin_Alter;
+        _rigid.velocity = Origin_speed * Origin_angle * MapList.MapSpeed * mapSpeed * Origin_Alter * SpeedMap.MapSpeed * TrickSter;
 
 
 
@@ -254,6 +256,14 @@ public class Ball : MonoBehaviour
                 .AddForce((collision.transform.position-transform.position).normalized + new Vector3(0,0.1f,0) * Origin_speed *6, ForceMode2D.Impulse);
         }
 
+        if(SpeedMap.Trickstar == true)
+        {
+            TrickSter += 0.1f;
+        }
+        else
+        {
+            TrickSter = 1;
+        }
 
     }
 

@@ -92,7 +92,8 @@ public class MapList : MonoBehaviour
         o.transform.position = transform.position;
 
         this.t = 60;
-
+        SpeedMap.MapSpeed = 1;
+        SpeedMap.Trickstar = false;
         //_mapList.Remove(_mapList[0]);
     }
 
