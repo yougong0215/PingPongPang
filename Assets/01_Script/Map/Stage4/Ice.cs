@@ -5,37 +5,34 @@ using UnityEngine;
 public class Ice : MonoBehaviour
 {
     Rigidbody2D _rigid;
-
+    Vector3 a;
+    [SerializeField] LayerMask ly;
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
     }
 
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Update()
     {
-        if (collision.gameObject.GetComponent<Ball>())
-        {
-            Vector3 a = collision.transform.position;
-            _rigid.velocity = (a - transform.position).normalized * 1.5f;
-        }
+        _rigid.velocity = a * 1.5f;
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.CompareTag("MapUp")) // ¿≠∫Æ æ∆∑ø∫Æ ø°∞‘ ¥Í¿∏∏È
         {
-            if (_rigid.velocity.y >= 0)
-            {
-                _rigid.velocity = new Vector3(_rigid.velocity.x, -_rigid.velocity.y);
-            }
+
+            a.y *= -1;
+
         }
         if (collision.gameObject.CompareTag("MapDown")) // ¿≠∫Æ æ∆∑ø∫Æ ø°∞‘ ¥Í¿∏∏È
         {
-            if (_rigid.velocity.y <= 0)
-            {
-                _rigid.velocity = new Vector3(_rigid.velocity.x, -_rigid.velocity.y);
-            }
+
+            a.y *= -1;
+
         }
-        if(collision.gameObject.tag == "A")
+        if (collision.gameObject.tag == "A")
         {
             Destroy(collision.gameObject);
         }
@@ -43,5 +40,17 @@ public class Ice : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Ball>())
+        {
+            a = (transform.position - a).normalized;
+            _rigid.velocity = a * 1.5f;
+            gameObject.layer = 6;
+            GetComponent<BoxCollider2D>().isTrigger = true;
+        }
+
     }
 }

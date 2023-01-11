@@ -47,7 +47,7 @@ public class PlayerInterrabter : MonoBehaviour
 
     public float Speed = 1;
 
-    public float MapGimicspeed;
+    public float MapGimicspeed = 1;
 
     [SerializeField] GameObject Sprite;
 
@@ -59,7 +59,7 @@ public class PlayerInterrabter : MonoBehaviour
 
         transform.localScale = new Vector3(0.3f, 1.4f, 1);
         GameManager.Instance.PlayerSetting(_playerEnum, this);
-        if(_playerEnum == PlayerEnum.A)
+        if (_playerEnum == PlayerEnum.A)
             transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameManager.Instance.A;
         else
             transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameManager.Instance.B;
@@ -91,18 +91,18 @@ public class PlayerInterrabter : MonoBehaviour
     {
 
 
-        if(Input.GetKey(Up))
-            transform.position += new Vector3(0, twinValue) * Speed * Time.deltaTime;
+        if (Input.GetKey(Up))
+            transform.position += new Vector3(0, twinValue) * MapGimicspeed * Speed * Time.deltaTime;
         if (Input.GetKey(Down))
-            transform.position += new Vector3(0, -twinValue) * Speed * Time.deltaTime;
+            transform.position += new Vector3(0, -twinValue) * MapGimicspeed * Speed * Time.deltaTime;
 
-        if(PlayerInfin == true)
+        if (PlayerInfin == true)
         {
             Sprite.SetActive(true);
             if (alter != null)
                 alter.PlayerInfin = true;
         }
-        else 
+        else
         {
             Sprite.SetActive(false);
             if (alter != null)
@@ -119,6 +119,9 @@ public class PlayerInterrabter : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Sans"))
+            Destroy(this.gameObject);
+
         if (collision.gameObject.CompareTag("Ball")) // 공에 닿음녀
         {
 
@@ -127,6 +130,21 @@ public class PlayerInterrabter : MonoBehaviour
             //StartCoroutine(BoxColliderONOFF());
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("water"))
+        {
+            MapGimicspeed = 0.75f;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("water"))
+            MapGimicspeed = 1f;
+    }
+
 
     void SetAbility(Ball b)
     {

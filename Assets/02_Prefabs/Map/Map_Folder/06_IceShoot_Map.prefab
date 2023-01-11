@@ -183,6 +183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16fbd7035dcbb440ab0133b26ed653e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ly:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!61 &3637475177104751253
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -329,6 +332,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16fbd7035dcbb440ab0133b26ed653e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ly:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!61 &1440995229844817836
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -475,6 +481,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16fbd7035dcbb440ab0133b26ed653e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ly:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!61 &4566194072533893564
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -621,6 +630,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16fbd7035dcbb440ab0133b26ed653e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ly:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!61 &3443307787025812398
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -767,6 +779,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16fbd7035dcbb440ab0133b26ed653e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ly:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!61 &1258309285594261331
 BoxCollider2D:
   m_ObjectHideFlags: 0

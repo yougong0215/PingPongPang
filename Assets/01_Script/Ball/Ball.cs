@@ -67,7 +67,7 @@ public class Ball : MonoBehaviour
     IEnumerator StartBox()
     {
         GetComponent<BoxCollider2D>().enabled = false;
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.6f);
         GetComponent<BoxCollider2D>().enabled = true;
     }
 
@@ -239,6 +239,19 @@ public class Ball : MonoBehaviour
 
                 Origin_angle.Normalize();
             }
+        }
+
+        if(collision.gameObject.CompareTag("Sans"))
+        {
+
+                Origin_angle *= -1;
+            Origin_angle.x += Random.Range(-0.2f, 0.2f);
+            Origin_angle.y += Random.Range(-0.2f, 0.2f);
+            Origin_angle.Normalize();
+
+
+            collision.gameObject.GetComponent<Rigidbody2D>()
+                .AddForce((collision.transform.position-transform.position).normalized + new Vector3(0,0.1f,0) * Origin_speed *6, ForceMode2D.Impulse);
         }
 
 
