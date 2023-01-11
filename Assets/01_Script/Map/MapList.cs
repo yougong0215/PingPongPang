@@ -19,6 +19,8 @@ public class MapList : MonoBehaviour
     [SerializeField] public GameObject playerAWin;
     [SerializeField] public GameObject playerBWin;
 
+    [SerializeField] public Image panel;
+
     public static int MapSpeed = 1;
 
     float t;
@@ -71,7 +73,6 @@ public class MapList : MonoBehaviour
 
     public void Started()
     {
-        this.t = 30;
         StartCoroutine(Startedd());
     }
     public IEnumerator Startedd()
@@ -90,15 +91,22 @@ public class MapList : MonoBehaviour
         map = o;
         o.transform.position = transform.position;
 
+        this.t = 60;
+
         //_mapList.Remove(_mapList[0]);
     }
 
     private void Update()
     {
         t -= Time.deltaTime;
-        if(t < 0)
+        Debug.Log(t);
+        if (t < 0)
         {
             MapSpeed = 3;
+        }
+        else if (t < 30)
+        {
+            MapSpeed = 2;
         }
         else
         {

@@ -32,12 +32,15 @@ public class GameManager : Singleton<GameManager>
     public Sprite A;
     public Sprite B;
 
+    UISquence ui;
+
 
     public void Reset()
     {
 
         cl = GameObject.FindObjectOfType<CardList>(true);
         map = GameObject.FindObjectOfType<MapList>();
+        ui = GameObject.FindObjectOfType<UISquence>(true);
 
         A = FindObjectOfType<CharacterSelect>().GetA();
         B = FindObjectOfType<CharacterSelect>().GetB();
@@ -85,7 +88,7 @@ public class GameManager : Singleton<GameManager>
         A_RoundWin = false;
         B_RoundWin = false;
 
-        if (pl == PlayerEnum.B)
+        if (pl == PlayerEnum.A)
         {
             B_WinScore++;
             map.PlayerBWin();
@@ -113,29 +116,70 @@ public class GameManager : Singleton<GameManager>
 
     public void PlayerRound(PlayerEnum pl)
     {
-        if(A_RoundWin == true && pl == PlayerEnum.A)
+        ui.gameObject.SetActive(true);
+
+        if (A_RoundWin == true && pl == PlayerEnum.A)
         {
-            GameSet(PlayerEnum.B);
+            StartCoroutine(MapEndGame(PlayerEnum.A));
+            ui.GameWinB();
+            
             return;
         }
         else if(B_RoundWin == true && pl == PlayerEnum.B)
         {
-            GameSet(PlayerEnum.A);
+            StartCoroutine(MapEndGame(PlayerEnum.B));
+            ui.GameWinA();
+            return;
+        }
+
+        StartCoroutine(MapAnimation());
+
+        if (A_RoundWin == true && pl == PlayerEnum.B 
+            || B_RoundWin == true && pl == PlayerEnum.A)
+        {
+            A_RoundWin = true;
+            B_RoundWin = true;
+            ui.RoundWinPlayerOther();
             return;
         }
 
         if(pl == PlayerEnum.A)
         {
+            ui.RoundWinPlayer2();
             A_RoundWin = true;
         }
         else
         {
+            ui.RoundWinPlayer1();
             B_RoundWin = true;
         }
 
+
+
+    }
+
+    public IEnumerator MapEndGame(PlayerEnum T)
+    {
+        ui.SequenceEnd = false;
+        
+
+        yield return new WaitUntil(() => ui.SequenceEnd);
+        ui.SequenceEnd = false;
+        ui.gameObject.SetActive(false);
+        GameSet(T);
+    }
+
+    public IEnumerator MapAnimation()
+    {
+        ui.SequenceEnd = false;
+
+
+        yield return new WaitUntil(()=> ui.SequenceEnd);
+
+        ui.SequenceEnd = false;
+        ui.gameObject.SetActive(false);
         map.RoundEnd();
         map.Started();
-
     }
 
     public void PlayerSetting(PlayerEnum pl, PlayerInterrabter p)

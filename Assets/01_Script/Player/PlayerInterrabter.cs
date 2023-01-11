@@ -30,6 +30,9 @@ public class PlayerInterrabter : MonoBehaviour
     [SerializeField] KeyCode Up;
     [SerializeField] KeyCode Down;
 
+    public bool PlayerInfin = false;
+
+
     public float TOZAZA = 0.5f;
     public bool toza = false;
     public bool MoonGwa = false;
@@ -42,9 +45,9 @@ public class PlayerInterrabter : MonoBehaviour
 
     public float Speed = 1;
 
-    private void Awake()
-    {
-    }
+    public float MapGimicspeed;
+
+    [SerializeField] GameObject Sprite;
 
     private void OnEnable()
     {
@@ -86,6 +89,15 @@ public class PlayerInterrabter : MonoBehaviour
             transform.position += new Vector3(0, twinValue) * Speed * Time.deltaTime;
         if (Input.GetKey(Down))
             transform.position += new Vector3(0, -twinValue) * Speed * Time.deltaTime;
+
+        if(PlayerInfin == true)
+        {
+            Sprite.SetActive(true);
+        }
+        else
+        {
+            Sprite.SetActive(false);
+        }
 
 
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -4.3f, 4.3f), 0);
