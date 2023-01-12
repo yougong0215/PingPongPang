@@ -132,7 +132,7 @@ public class MapList : MonoBehaviour
     private void Update()
     {
         t -= Time.deltaTime;
-        Debug.Log(t);
+        //Debug.Log(t);
         if (t < 0)
         {
             MapSpeed = 3;

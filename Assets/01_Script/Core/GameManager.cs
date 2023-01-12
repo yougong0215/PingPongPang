@@ -19,7 +19,7 @@ public class GameManager : Singleton<GameManager>
 
     [Header("TeamAll")]
     [SerializeField] public List<ALLAbility> All = new List<ALLAbility>();
-    CardList cl;
+    public CardList cl;
     MapList map;
 
     public GameObject UserA;
@@ -95,20 +95,13 @@ public class GameManager : Singleton<GameManager>
         if (A_WinScore == 5)
         {
             SceneManager.LoadScene("GameVSMODEWinA");
+            return;
         }
         else if (B_WinScore == 5)
         {
 
             SceneManager.LoadScene("GameVSMODEWinB");
-
-        }
-        if (pl == PlayerEnum.A) // 진에면 반대쪽에 승
-        {
-            map.PlayerAWin(B_WinScore);
-        }
-        else
-        {
-            map.PlayerBWin(A_WinScore);
+            return;
         }
 
         cl.gameObject.SetActive(true);
@@ -298,8 +291,8 @@ public class GameManager : Singleton<GameManager>
                     p.twin = true;
                     break;
             }
-            Debug.Log(speed);
         }
+        Debug.Log($"스피드 : {speed}");
         if (p.twin == true)
         {
             size *= 0.5f;
@@ -331,7 +324,7 @@ public class GameManager : Singleton<GameManager>
             b.LastSet(1, pl.Angler, pl);
         else
             b.LastSet(-1, pl.Angler, pl);
-
+        yield return null;
 
         if (pl.twin == true)
         {

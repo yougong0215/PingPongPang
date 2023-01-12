@@ -65,7 +65,8 @@ public class CardList : MonoBehaviour
 
     public IEnumerator CardSelect(PlayerEnum pl, bool Choose = false)
     {
-
+        yield return null;
+        yield return null;
         for (int i = 0; i < _cardList.Count; i++)
         {
             for (int j = 0; j < _cardList[i].CardLuck; j++)
@@ -74,7 +75,7 @@ public class CardList : MonoBehaviour
                 _cardListed.Add(_cardList[i]);
             }
         }
-
+        _cardListed = GetShuffleList<AbilityCard>(_cardListed);
         int t = A.transform.childCount;
 
         for (int i =0; i < t; i++)
@@ -93,22 +94,21 @@ public class CardList : MonoBehaviour
         }
 
         yield return null;
-        _cardListed = GetShuffleList<AbilityCard>(_cardListed);
         yield return null;
         GameObject obj = null;
         obj = Instantiate(_cardListed[0]._cardObj.gameObject, A.transform);
-        obj.GetComponent<Card>().Set(_cardListed[0].NameExplain, _cardListed[0].ItemImg, _cardListed[0].cardImg, _cardListed[0].Explain, pl, _cardListed[0].ItemImg,Choose);
+        obj.GetComponent<Card>().Set(_cardListed[0].NameExplain, _cardListed[0].ItemImg, _cardListed[0].cardImg, _cardListed[0].Explain, pl, _cardListed[0].ItemImg, _cardListed[0]  ,Choose);
 
         
         yield return null;
         obj = Instantiate(_cardListed[1]._cardObj.gameObject, B.transform);
-        obj.GetComponent<Card>().Set(_cardListed[1].NameExplain, _cardListed[1].ItemImg, _cardListed[1].cardImg, _cardListed[1].Explain, pl, _cardListed[1].ItemImg, Choose);
+        obj.GetComponent<Card>().Set(_cardListed[1].NameExplain, _cardListed[1].ItemImg, _cardListed[1].cardImg, _cardListed[1].Explain, pl, _cardListed[1].ItemImg, _cardListed[1], Choose);
 
         yield return null;
         obj = Instantiate(_cardListed[2]._cardObj.gameObject, C.transform);
-        obj.GetComponent<Card>().Set(_cardListed[2].NameExplain, _cardListed[2].ItemImg, _cardListed[2].cardImg, _cardListed[2].Explain, pl, _cardListed[2].ItemImg,Choose);
+        obj.GetComponent<Card>().Set(_cardListed[2].NameExplain, _cardListed[2].ItemImg, _cardListed[2].cardImg, _cardListed[2].Explain, pl, _cardListed[2].ItemImg, _cardListed[0], Choose);
 
-        _cardListed.Clear();
+        //_cardListed.Clear();
 
         
     }

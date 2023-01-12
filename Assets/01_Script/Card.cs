@@ -18,11 +18,13 @@ public class Card : MonoBehaviour
     bool Choosed = false;
     Sprite _spriteSave;
 
-    float o = 0;
+    int o = 0;
 
     Vector3 vec;
 
-    public void Set( string t, Sprite img, Sprite card, string ex, PlayerEnum pl, Sprite ab, bool Choosed  = false)
+    AbilityCard abb;
+
+    public void Set( string t, Sprite img, Sprite card, string ex, PlayerEnum pl, Sprite ab, AbilityCard abb,bool Choosed  = false)
     {
         GetComponent<RectTransform>().position = transform.parent.GetComponent<RectTransform>().position;
         GetComponent<RectTransform>().rotation = transform.parent.GetComponent<RectTransform>().rotation;
@@ -34,6 +36,8 @@ public class Card : MonoBehaviour
         this.Choosed = Choosed;
         _spriteSave = ab;
         Alpha();
+        this.abb = abb;
+
     }
     
 
@@ -75,6 +79,8 @@ public class Card : MonoBehaviour
             }
         }
 
+        GameManager.Instance.cl._cardList.Find(a => a == abb).CardLuck--;
+
         if(Choosed == false)
             GameManager.Instance.GameStart();
         else
@@ -82,7 +88,7 @@ public class Card : MonoBehaviour
             Choosed = false;
             GameManager.Instance.GameSet2();
         }
-        
+        GameManager.Instance.cl._cardListed.Clear();
     }
     public void Alpha() 
     {

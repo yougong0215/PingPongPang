@@ -15,7 +15,7 @@ public class DoomChit : MonoBehaviour
     {
         if (IntroUIMove == true && ENDUI == false)
         {
-            transform.DOMoveX(transform.position.x - 1200, gotime + 0.4f);
+            transform.DOMoveX(transform.position.x - 11, gotime + 0.4f);
         }
         if(a != null)
             a.gameObject.SetActive(false);

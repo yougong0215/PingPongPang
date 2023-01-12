@@ -76,6 +76,29 @@ public class Ball : MonoBehaviour
     private void Update()
     {
 
+        if(Mathf.Abs(Origin_angle.x) < 0.2f)
+        {
+            if(Random.Range(0, 2f) == 0)
+            {
+                Origin_angle.x += 0.2f;
+            }
+            else
+            {
+                Origin_angle.x -= 0.2f;
+            }
+        }
+        if(Mathf.Abs(Origin_angle.y) < 0.2f)
+        {
+            if (Random.Range(0, 2f) == 0)
+            {
+                Origin_angle.y += 0.2f;
+            }
+            else
+            {
+                Origin_angle.y -= 0.2f;
+            }
+        }
+
         _rigid.velocity = Origin_speed * Origin_angle * MapList.MapSpeed * mapSpeed * Origin_Alter * SpeedMap.MapSpeed * TrickSter;
 
 
@@ -130,7 +153,7 @@ public class Ball : MonoBehaviour
 
 
         Angle_Changer.Normalize();
-        Debug.Log($"{Dir} * {Origin_speed} * {Angle_Changer.y} * {Origin_Alter}");
+        //Debug.Log($"{Dir} * {Origin_speed} * {Angle_Changer.y} * {Origin_Alter}");
         if (pl.toza == true)
         {
             Origin_speed *= pl.TOZAZA;
@@ -144,7 +167,7 @@ public class Ball : MonoBehaviour
     public void AlterSetting()
     {
         Debug.Log($"{gameObject.name} : {Origin_Alter}");
-        if (Origin_Alter > 0.6f)
+        if (Origin_Alter > 0.8f)
         {
             Origin_Alter -= 0.2f;
             Ball b = Instantiate(this);
@@ -209,16 +232,11 @@ public class Ball : MonoBehaviour
 
         if(collision.gameObject.CompareTag("MapLeft"))
         {
-            if (transform.position.x >= 0)
-            {
-                if(Origin_angle.x > 0)
+
                     Origin_angle.x *= -1;
-            }
-            else
-            {
-                if (Origin_angle.x < 0)
-                    Origin_angle.x *= -1;
-            }
+            
+
+            Debug.Log(Origin_angle);
             GetComponent<AudioSource>().Play();
             Origin_angle.Normalize();
         }
@@ -256,7 +274,7 @@ public class Ball : MonoBehaviour
 
 
             collision.gameObject.GetComponent<Rigidbody2D>()
-                .AddForce((collision.transform.position-transform.position).normalized + new Vector3(0,0.1f,0) * Origin_speed *6, ForceMode2D.Impulse);
+                .AddForce((collision.transform.position-transform.position).normalized + new Vector3(0,0.1f,0) * Origin_speed * 30, ForceMode2D.Impulse);
         }
 
         if(SpeedMap.Trickstar == true)

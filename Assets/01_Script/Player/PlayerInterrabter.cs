@@ -58,6 +58,10 @@ public class PlayerInterrabter : MonoBehaviour
 
     private void OnEnable()
     {
+
+        MapGimicspeed = 1;
+        twinValue = 1;
+        transform.position = new Vector3(transform.position.x, 0, 0);
         cam = Camera.main;
         StartCoroutine(GameManager.Instance.TeamSetting(gameObject));
         if (twin == false)
@@ -88,8 +92,18 @@ public class PlayerInterrabter : MonoBehaviour
         yield return null;
         yield return null;
         yield return null;
+        yield return null;
+        yield return null;
+        yield return null;
+        yield return null;
+        yield return null;
+        yield return null;
+        yield return null;
+        yield return null;
+        yield return null;
         if (twin == true)
         {
+            transform.position = new Vector3(transform.position.x, 0, 0);
             GameObject obj = Instantiate(gameObject);
 
             obj.transform.position = transform.position;
@@ -112,9 +126,16 @@ public class PlayerInterrabter : MonoBehaviour
         {
 
             if (Input.GetKey(Up))
+            {
                 transform.position += new Vector3(0, twinValue) * MapGimicspeed * Speed * Time.deltaTime;
+                Debug.Log("U[");
+            }
             if (Input.GetKey(Down))
+            {
                 transform.position += new Vector3(0, -twinValue) * MapGimicspeed * Speed * Time.deltaTime;
+                Debug.Log("Down");
+            }
+            Debug.Log($"{new Vector3(0, -twinValue)} * {MapGimicspeed} * {Speed}");
         }
         else
         {
@@ -166,13 +187,13 @@ public class PlayerInterrabter : MonoBehaviour
 
 
 
-        if (pos.x < 0.1f) pos.x = 0.1f;
+        if (pos.x < 0.025f) pos.x = 0.025f;
 
-        if (pos.x > 0.9f) pos.x = 0.9f;
+        if (pos.x > 0.975f) pos.x = 0.975f;
 
-        if (pos.y < 0.1f) pos.y = 0.1f;
+        if (pos.y < 0.025f) pos.y = 0.025f;
 
-        if (pos.y > 0.9f) pos.y = 0.9f;
+        if (pos.y > 0.975f) pos.y = 0.975f;
 
 
 

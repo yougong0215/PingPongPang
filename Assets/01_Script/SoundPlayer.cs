@@ -9,22 +9,22 @@ public class SoundPlayer : MonoBehaviour
 
     [SerializeField] public AudioMixer audioMixer;
 
-    public Slider audioSliderMaster;
-    public Slider audioSliderBGM;
-    public Slider audioSliderSFX;
-
-    private void Update()
+    public void SetLevelMaster(float sliderVal)
     {
+        audioMixer.SetFloat("Master", Mathf.Lerp(-5, 0, sliderVal));
 
-        if(Input.GetMouseButtonUp(0))
-        {
-            float volume1 = audioSliderMaster.value;
-            audioMixer.SetFloat("Master", volume1);
-            float volume2 = audioSliderBGM.value;
-            audioMixer.SetFloat("BGM", volume2);
-            float volume3 = audioSliderSFX.value;
-            audioMixer.SetFloat("SFX", volume3);
-        }
+        float t;
+        audioMixer.GetFloat("Master", out t);
+
+        Debug.Log(t);
+    }
+    public void SetLevelBGM(float sliderVal)
+    {
+        audioMixer.SetFloat("BGM", Mathf.Lerp(-5, 5, sliderVal));
+    }
+    public void SetLevelSound(float sliderVal)
+    {
+        audioMixer.SetFloat("SFX", Mathf.Lerp(-5, 5, sliderVal));
     }
 
 }

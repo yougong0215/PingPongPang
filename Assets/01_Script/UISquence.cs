@@ -62,14 +62,14 @@ public class UISquence : MonoBehaviour
     {
         Reset();
         UI_A.transform.DOMove(new Vector3(0, 0, 0), 2f).OnComplete(() => SequenceEnd = true);
-        UI_A.transform.DOScale(10, 1.8f);
+        UI_A.transform.DOScale(7, 1.8f);
         UI_B.transform.DOMoveX(-100, 0.6f);
     }
     public void GameWinB()
     {
         Reset();
         UI_B.transform.DOMove(new Vector3(0, 0, 0), 2f).OnComplete(() => SequenceEnd = true);
-        UI_B.transform.DOScale(10, 1.8f);
+        UI_B.transform.DOScale(7, 1.8f);
         UI_A.transform.DOMoveX(-100, 0.6f);
     }
 }
