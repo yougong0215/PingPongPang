@@ -23,8 +23,9 @@ public class Card : MonoBehaviour
     Vector3 vec;
 
     AbilityCard abb;
+    bool ai = false;
 
-    public void Set( string t, Sprite img, Sprite card, string ex, PlayerEnum pl, Sprite ab, AbilityCard abb,bool Choosed  = false)
+    public void Set( string t, Sprite img, Sprite card, string ex, PlayerEnum pl, Sprite ab, AbilityCard abb,bool Choosed  = false, bool AImode = false)
     {
         GetComponent<RectTransform>().position = transform.parent.GetComponent<RectTransform>().position;
         GetComponent<RectTransform>().rotation = transform.parent.GetComponent<RectTransform>().rotation;
@@ -81,7 +82,8 @@ public class Card : MonoBehaviour
 
         GameManager.Instance.cl._cardList.Find(a => a == abb).CardLuck--;
 
-        if(Choosed == false)
+
+        if (Choosed == false)
             GameManager.Instance.GameStart();
         else
         {

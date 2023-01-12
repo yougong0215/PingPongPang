@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum PlayerEnum
@@ -25,6 +26,7 @@ public class PlayerInterrabter : MonoBehaviour
 {
     [Header("PlayerSetting")]
     [SerializeField] public PlayerEnum _playerEnum;
+    public bool AIMODE = false;
 
     [Header("KeySetting")]
     [SerializeField] KeyCode Up;
@@ -116,58 +118,136 @@ public class PlayerInterrabter : MonoBehaviour
         }
     }
     float t = 0;
+    List<Ball> ballPos;
 
 
     // Update is called once per frame
     void Update()
     {
-
-        if(Ice == false)
+        if(AIMODE == false)
         {
+            if (Ice == false)
+            {
 
-            if (Input.GetKey(Up))
-            {
-                transform.position += new Vector3(0, twinValue) * MapGimicspeed * Speed * Time.deltaTime;
-                Debug.Log("U[");
+                if (Input.GetKey(Up))
+                {
+                    transform.position += new Vector3(0, twinValue) * MapGimicspeed * Speed * Time.deltaTime;
+                    Debug.Log("U[");
+                }
+                if (Input.GetKey(Down))
+                {
+                    transform.position += new Vector3(0, -twinValue) * MapGimicspeed * Speed * Time.deltaTime;
+                    Debug.Log("Down");
+                }
+                Debug.Log($"{new Vector3(0, -twinValue)} * {MapGimicspeed} * {Speed}");
             }
-            if (Input.GetKey(Down))
+            else
             {
-                transform.position += new Vector3(0, -twinValue) * MapGimicspeed * Speed * Time.deltaTime;
-                Debug.Log("Down");
+
+                transform.position =
+                    Vector3.Lerp(transform.position, transform.position + new Vector3(0, t * twinValue, 0), 10 * Time.deltaTime);
+                if (Input.GetKey(Up))
+                {
+                    t += Time.deltaTime;
+                }
+                else if (Input.GetKey(Down))
+                {
+                    t -= Time.deltaTime;
+                }
+
+                if (!Input.GetKey(Up) && t > 0)
+                {
+                    t -= Time.deltaTime;
+                }
+                if (!Input.GetKey(Down) && t < 0)
+                {
+                    t += Time.deltaTime;
+                }
+                if (t > 1)
+                {
+                    t = 1;
+                }
+                if (t < -1)
+                {
+                    t = -1;
+                }
             }
-            Debug.Log($"{new Vector3(0, -twinValue)} * {MapGimicspeed} * {Speed}");
         }
         else
         {
+            ballPos = FindObjectsOfType<Ball>().ToList();
+            for (int i = 1; i < ballPos.Count; i++)
+            {
+                if (Vector3.Distance(transform.position, ballPos[i - 1].transform.position)
+                    < Vector3.Distance(transform.position, ballPos[i].transform.position))
+                {
+                    Ball b = ballPos[i - 1];
+                    ballPos[i - 1] = ballPos[i];
+                    ballPos[i] = b;
+                }
+            }
 
-            transform.position = 
-                Vector3.Lerp(transform.position, transform.position + new Vector3(0, t * twinValue, 0) , 10 * Time.deltaTime);
-            if (Input.GetKey(Up))
+
+            if (Ice == false)
             {
-                t += Time.deltaTime;
+
+                if (ballPos[0].transform.position.y > transform.position.y)
+                {
+                    transform.position += new Vector3(0, twinValue) * MapGimicspeed * Speed * Time.deltaTime;
+                    Debug.Log("U[");
+                }
+                if (ballPos[0].transform.position.y < transform.position.y)
+                {
+                    transform.position += new Vector3(0, -twinValue) * MapGimicspeed * Speed * Time.deltaTime;
+                    Debug.Log("Down");
+                }
+                Debug.Log($"{new Vector3(0, -twinValue)} * {MapGimicspeed} * {Speed}");
             }
-            else if (Input.GetKey(Down))
+            else
             {
-                t -= Time.deltaTime;
+                bool up = false;
+                bool down = false;
+                transform.position =
+                    Vector3.Lerp(transform.position, transform.position + new Vector3(0, t * twinValue, 0), 10 * Time.deltaTime);
+                if (ballPos[0].transform.position.y > transform.position.y)
+                {
+                    t += Time.deltaTime;
+                    up = true;
+                }
+                else
+                {
+                    up = false;
+                }
+                if (ballPos[0].transform.position.y < transform.position.y)
+                {
+                    t -= Time.deltaTime;
+                    down = true;
+                }
+                else
+                {
+                    down = false;
+                }
+
+                if (!up && t > 0)
+                {
+                    t -= Time.deltaTime;
+                }
+                if (!down && t < 0)
+                {
+                    t += Time.deltaTime;
+                }
+                if (t > 1)
+                {
+                    t = 1;
+                }
+                if (t < -1)
+                {
+                    t = -1;
+                }
             }
 
-            if (!Input.GetKey(Up) && t > 0)
-            {
-                t -= Time.deltaTime;
-            }
-            if (!Input.GetKey(Down) && t < 0)
-            {
-                t += Time.deltaTime;
-            }
-            if(t > 1)
-            {
-                t = 1;
-            }
-            if(t < -1)
-            {
-                t = -1;
-            }
         }
+       
 
         if (PlayerInfin == true)
         {

@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class CharacterSelect : MonoBehaviour
 {
+    public bool AI;
+    [SerializeField] Sprite random;
+    [SerializeField] List<Sprite> AISPrite = new List<Sprite>();
     [SerializeField] Button img;
 
     [SerializeField] Image f_img;
@@ -22,7 +25,7 @@ public class CharacterSelect : MonoBehaviour
 
     public void Select(Sprite spi)
     {
-        if(!Char)
+        if(!Char || AI == true)
         {
             f_img.sprite = spi;
             One = spi;
@@ -33,6 +36,11 @@ public class CharacterSelect : MonoBehaviour
             s_img.sprite = spi;
             Two = spi;
             Char = false;
+        }
+
+        if(AI == true)
+        {
+            Two = AISPrite[Random.Range(0,AISPrite.Count-1)];
         }
 
         if(One != null && Two != null)

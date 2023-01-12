@@ -20,7 +20,7 @@ public class GameManager : Singleton<GameManager>
     [Header("TeamAll")]
     [SerializeField] public List<ALLAbility> All = new List<ALLAbility>();
     public CardList cl;
-    MapList map;
+    public MapList map;
 
     public GameObject UserA;
     public GameObject UserB;
@@ -72,6 +72,7 @@ public class GameManager : Singleton<GameManager>
 
     public IEnumerator GameInit2()
     {
+        cl.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.1f);
         cl.gameObject.SetActive(true);
         StartCoroutine(cl.CardSelect(PlayerEnum.B));
@@ -293,6 +294,25 @@ public class GameManager : Singleton<GameManager>
             }
         }
         Debug.Log($"½ºÇÇµå : {speed}");
+        if(p._playerEnum == PlayerEnum.A && map.PlayAAIMODE == true)
+        {
+            p.AIMODE = true;
+        }
+        else
+        {
+            p.AIMODE = false;
+        }
+
+        if (p._playerEnum == PlayerEnum.B && map.PlayBAIMODE == true)
+        {
+            p.AIMODE = true;
+        }
+        else
+        {
+            p.AIMODE = false;
+        }
+
+
         if (p.twin == true)
         {
             size *= 0.5f;

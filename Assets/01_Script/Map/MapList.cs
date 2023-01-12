@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class MapList : MonoBehaviour
 {
+    public bool PlayAAIMODE = false;
+    public bool PlayBAIMODE = false;
     [Header("게임 배이스")]
     [SerializeField] GameObject BaseGame;
 
