@@ -15,9 +15,14 @@ public class MapList : MonoBehaviour
     [SerializeField] public GameObject playerB;
     [SerializeField] public Image baseimg;
 
-    [SerializeField] public Image basewinimg;
     [SerializeField] public GameObject playerAWin;
     [SerializeField] public GameObject playerBWin;
+    [SerializeField] Sprite Red0;
+    [SerializeField] Sprite Blue0;
+    [SerializeField] Sprite Red;
+    [SerializeField] Sprite Blue;
+    [SerializeField] Sprite Red2;
+    [SerializeField] Sprite Blue2;
 
     [SerializeField] public Image panel;
 
@@ -47,15 +52,42 @@ public class MapList : MonoBehaviour
         obj.transform.localEulerAngles = new Vector3(0, 0, 180);
     }
 
-    public void PlayerAWin()
+    public void PlayerAWin(int i)
     {
-        GameObject obj = Instantiate(basewinimg.gameObject, playerAWin.transform);
+        if(playerAWin.transform.GetChild(i).GetComponent<Image>().sprite == Red0)
+            playerAWin.transform.GetChild(i).GetComponent<Image>().sprite = Red;
+        else
+        {
+            playerAWin.transform.GetChild(i).GetComponent<Image>().sprite = Red2;
+            for(int t =0; t < playerBWin.transform.childCount; t++)
+            {
+                if(playerBWin.transform.GetChild(t).GetComponent<Image>().sprite == Blue)
+                {
+                    playerBWin.transform.GetChild(t).GetComponent<Image>().sprite = Blue0;
+                }
+            }
+        }
     }
 
-    public void PlayerBWin()
+    public void PlayerBWin(int i)
     {
-        GameObject obj = Instantiate(basewinimg.gameObject, playerBWin.transform);
-        obj.transform.localEulerAngles = new Vector3(0, 0, 180);
+
+        if (playerBWin.transform.GetChild(i).GetComponent<Image>().sprite == Blue0)
+        {
+            playerBWin.transform.GetChild(i).GetComponent<Image>().sprite = Blue;
+            playerBWin.transform.GetChild(i).transform.localEulerAngles = new Vector3(0, 0, 180);
+        }
+        else
+        {
+            playerBWin.transform.GetChild(i).GetComponent<Image>().sprite = Blue2;
+            for (int t = 0; t < playerAWin.transform.childCount; t++)
+            {
+                if (playerAWin.transform.GetChild(t).GetComponent<Image>().sprite == Red)
+                {
+                    playerAWin.transform.GetChild(t).GetComponent<Image>().sprite = Red0;
+                }
+            }
+        }
     }
 
 

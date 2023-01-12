@@ -104,13 +104,12 @@ public class GameManager : Singleton<GameManager>
         }
         if (pl == PlayerEnum.A)
         {
-            B_WinScore++;
-            map.PlayerBWin();
+            map.PlayerAWin(A_WinScore);
         }
         else
         {
+            map.PlayerBWin(B_WinScore);
             A_WinScore++;
-            map.PlayerAWin();
         }
 
         cl.gameObject.SetActive(true);
@@ -136,36 +135,49 @@ public class GameManager : Singleton<GameManager>
         {
             StartCoroutine(MapEndGame(PlayerEnum.A));
             ui.GameWinB();
-            
+            map.PlayerBWin(B_WinScore);
+            A_WinScore++;
             return;
         }
         else if(B_RoundWin == true && pl == PlayerEnum.B)
         {
             StartCoroutine(MapEndGame(PlayerEnum.B));
             ui.GameWinA();
+            A_WinScore++;
+            map.PlayerBWin(A_WinScore);
             return;
         }
 
         StartCoroutine(MapAnimation());
 
-        if (A_RoundWin == true && pl == PlayerEnum.B 
-            || B_RoundWin == true && pl == PlayerEnum.A)
+        if (A_RoundWin == true && pl == PlayerEnum.B && B_RoundWin == false)
         {
             A_RoundWin = true;
             B_RoundWin = true;
             ui.RoundWinPlayerOther();
+            map.PlayerAWin(A_WinScore);
+            return;
+        }
+        else if(B_RoundWin == true && pl == PlayerEnum.A &&  A_RoundWin == false)
+        {
+            A_RoundWin = true;
+            B_RoundWin = true;
+            ui.RoundWinPlayerOther();
+            map.PlayerBWin(B_WinScore);
             return;
         }
 
         if(pl == PlayerEnum.A)
         {
             ui.RoundWinPlayer2();
-            A_RoundWin = true;
+            map.PlayerBWin(B_WinScore);
+            B_RoundWin = true;
         }
         else
         {
             ui.RoundWinPlayer1();
-            B_RoundWin = true;
+            map.PlayerAWin(A_WinScore);
+            A_RoundWin = true;
         }
 
 
