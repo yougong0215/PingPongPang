@@ -53,7 +53,7 @@ MonoBehaviour:
     Explain: "\uCE90\uB9AD\uD130 \uD06C\uAE30\uAC00 \uC99D\uAC00\uD558\uACE0,\n\uCE90\uB9AD\uD130
       \uC774\uB3D9\uC18D\uB3C4\uAC00 \uAC10\uC18C\uD569\uB2C8\uB2E4!"
     Overlap: 0
-    CardLuck: 3
+    CardLuck: 4
   - _cardObj: {fileID: 3218184519694212034, guid: d0b8309777ba7dd41ba89e90633482b8, type: 3}
     NameExplain: "\uC18C\uC778\uD654"
     cardImg: {fileID: 1366678786, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
@@ -61,7 +61,7 @@ MonoBehaviour:
     Explain: "\uCE90\uB9AD\uD130 \uD06C\uAE30\uAC00 \uAC10\uC18C\uD558\uACE0,\n\uCE90\uB9AD\uD130
       \uC774\uB3D9\uC18D\uB3C4\uAC00 \uC99D\uAC00\uD569\uB098\uB2E4!"
     Overlap: 0
-    CardLuck: 3
+    CardLuck: 4
   - _cardObj: {fileID: 3218184519694212034, guid: 92293be58b40d7a4cb0a50e1b6bdf622, type: 3}
     NameExplain: "\uC2A4\uD53C\uB4DC \uC0F7"
     cardImg: {fileID: 1366678786, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
@@ -69,7 +69,7 @@ MonoBehaviour:
     Explain: "\uACF5 \uC774\uB3D9\uC18D\uB3C4\uAC00 \uC99D\uAC00\uD558\uACE0,\n\uACF5
       \uD06C\uAE30\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4!"
     Overlap: 0
-    CardLuck: 3
+    CardLuck: 4
   - _cardObj: {fileID: 3218184519694212034, guid: 608db1ffd2e20da4ab4e3dc27c191559, type: 3}
     NameExplain: "\uC2AC\uB85C\uC6B0\uC0F7"
     cardImg: {fileID: 1366678786, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
@@ -77,7 +77,7 @@ MonoBehaviour:
     Explain: "\uACF5 \uC774\uB3D9\uC18D\uB3C4\uAC00 \uAC10\uC18C\uD558\uACE0,\n\uACF5
       \uD06C\uAE30\uAC00 \uAC10\uC18C\uD569\uB2C8\uB2E4!"
     Overlap: 0
-    CardLuck: 3
+    CardLuck: 4
   - _cardObj: {fileID: 3218184519694212034, guid: 83e28f0dd576dff47a252be209fdf291, type: 3}
     NameExplain: "\uD1A0\uB07C"
     cardImg: {fileID: -1775986853, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
@@ -121,7 +121,7 @@ MonoBehaviour:
     CardLuck: 2
   - _cardObj: {fileID: 3218184519694212034, guid: 1c87802f14ffae74eac37577271b34de, type: 3}
     NameExplain: "\uBB38\uACFC"
-    cardImg: {fileID: 1442070603, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
+    cardImg: {fileID: -1657664934, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
     ItemImg: {fileID: 21300000, guid: 41eb62334d699bf4da1394549f90ca58, type: 3}
     Explain: "\uACF5\uC758 \uBC18\uC0AC\uAC01\uC774 \uC608\uCE21\uD560 \uC218 \uC5C6\uAC8C
       \uBC14\uB01D\uB2C8\uB2E4!"
