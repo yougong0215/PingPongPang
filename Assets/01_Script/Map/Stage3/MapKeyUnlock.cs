@@ -19,6 +19,7 @@ public class MapKeyUnlock : MonoBehaviour
         {
             obj.transform.DOMoveY(100, 1.2f);
             GetComponent<SpriteRenderer>().sprite = null;
+            GetComponent<AudioSource>().Play();
         }
     }
     private void Update()

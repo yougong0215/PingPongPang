@@ -26,19 +26,25 @@ public class Stage1_Coming : MonoBehaviour
         {
             Debug.Log("しけしけし222");
             if (collision.gameObject.GetComponent<PlayerInterrabter>().PlayerInfin == false)
+            {
+                GetComponent<AudioSource>().Play();
                 Destroy(collision.gameObject);
+            }
             else
             {
-                Destroy(this);
+                transform.position += new Vector3(0, 1000, 0);
             }
         }
         if (collision.gameObject.CompareTag("B"))
         {
             if (collision.gameObject.GetComponent<PlayerInterrabter>().PlayerInfin == false)
+            {
+                GetComponent<AudioSource>().Play();
                 Destroy(collision.gameObject);
+            }
             else
             {
-                Destroy(this);
+                transform.position += new Vector3(0, 1000, 0);
             }
         }
     }

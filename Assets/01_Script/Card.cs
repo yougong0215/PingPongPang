@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -17,6 +18,10 @@ public class Card : MonoBehaviour
     bool Choosed = false;
     Sprite _spriteSave;
 
+    float o = 0;
+
+    Vector3 vec;
+
     public void Set( string t, Sprite img, Sprite card, string ex, PlayerEnum pl, Sprite ab, bool Choosed  = false)
     {
         GetComponent<RectTransform>().position = transform.parent.GetComponent<RectTransform>().position;
@@ -28,7 +33,9 @@ public class Card : MonoBehaviour
         this.pl = pl;
         this.Choosed = Choosed;
         _spriteSave = ab;
+        Alpha();
     }
+    
 
     IEnumerator ch()
     {
@@ -76,6 +83,21 @@ public class Card : MonoBehaviour
             GameManager.Instance.GameSet2();
         }
         
+    }
+    public void Alpha() 
+    {
+        GetComponent<Image>().color = new Color(1, 1,1, 0.7f);
+        transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(1, 1,1, 0.7f);
+        transform.GetChild(1).GetComponent<Image>().color = new Color(1, 1,1, 0.7f);
+        transform.GetChild(2).GetComponent<TextMeshProUGUI>().color = new Color(1, 1,1, 0.7f);
+    }
+
+    public void NoAlpha()
+    {
+        GetComponent<Image>().color = new Color(1, 1, 1f, 1f);
+        transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1f, 1f);
+        transform.GetChild(1).GetComponent<Image>().color = new Color(1, 1, 1f, 1);
+        transform.GetChild(2).GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1f, 1);
     }
     public void Choose()
     {

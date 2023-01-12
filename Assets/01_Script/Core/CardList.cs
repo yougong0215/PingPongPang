@@ -1,6 +1,8 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class AbilityCard
@@ -55,13 +57,6 @@ public class CardList : MonoBehaviour
         ts.gameObject.SetActive(false);
     }
 
-    private void OnEnable()
-    {
-        A.transform.GetChild(0).transform.parent = ts;
-        B.transform.GetChild(0).transform.parent = ts;
-        C.transform.GetChild(0).transform.parent = ts;
-    }
-
     public void GameEnd()
     {
         Destroy(this);
@@ -79,15 +74,36 @@ public class CardList : MonoBehaviour
                 _cardListed.Add(_cardList[i]);
             }
         }
+
+        int t = A.transform.childCount;
+
+        for (int i =0; i < t; i++)
+        {
+            A.transform.GetChild(i).transform.parent = ts;
+        }
+        t = B.transform.childCount;
+        for (int i = 0; i < t; i++)
+        {
+            B.transform.GetChild(i).transform.parent = ts;
+        }
+        t = C.transform.childCount;
+        for (int i = 0; i < t; i++)
+        {
+            C.transform.GetChild(i).transform.parent = ts;
+        }
+
         yield return null;
         _cardListed = GetShuffleList<AbilityCard>(_cardListed);
         yield return null;
         GameObject obj = null;
         obj = Instantiate(_cardListed[0]._cardObj.gameObject, A.transform);
         obj.GetComponent<Card>().Set(_cardListed[0].NameExplain, _cardListed[0].ItemImg, _cardListed[0].cardImg, _cardListed[0].Explain, pl, _cardListed[0].ItemImg,Choose);
+
+        
         yield return null;
         obj = Instantiate(_cardListed[1]._cardObj.gameObject, B.transform);
         obj.GetComponent<Card>().Set(_cardListed[1].NameExplain, _cardListed[1].ItemImg, _cardListed[1].cardImg, _cardListed[1].Explain, pl, _cardListed[1].ItemImg, Choose);
+
         yield return null;
         obj = Instantiate(_cardListed[2]._cardObj.gameObject, C.transform);
         obj.GetComponent<Card>().Set(_cardListed[2].NameExplain, _cardListed[2].ItemImg, _cardListed[2].cardImg, _cardListed[2].Explain, pl, _cardListed[2].ItemImg,Choose);

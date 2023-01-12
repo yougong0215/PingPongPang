@@ -20,7 +20,7 @@ public class SpeedMap : MonoBehaviour
     }
     public void Update()
     {
-        if(transform.parent.name == "bitcoin_icon")
+        if(gameObject.name == "bitcoin_icon")
         {
             time -= Time.deltaTime;
 

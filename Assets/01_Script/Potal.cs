@@ -16,6 +16,7 @@ public class Potal : MonoBehaviour
             }
 
             StartCoroutine(t(collision.GetComponent<Ball>()));
+
         }
     }
 
@@ -23,6 +24,7 @@ public class Potal : MonoBehaviour
     {
         float t = b.Origin_speed;
         b.Origin_speed = 0.1f;
+        GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(0.9f);
 
         b.Origin_speed = t*2;

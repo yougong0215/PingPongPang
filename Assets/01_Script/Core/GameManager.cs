@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -92,7 +92,16 @@ public class GameManager : Singleton<GameManager>
 
         A_RoundWin = false;
         B_RoundWin = false;
+        if (A_WinScore == 5)
+        {
+            SceneManager.LoadScene("GameVSMODEWinA");
+        }
+        else if (B_WinScore == 5)
+        {
 
+            SceneManager.LoadScene("GameVSMODEWinB");
+
+        }
         if (pl == PlayerEnum.A)
         {
             B_WinScore++;

@@ -219,6 +219,7 @@ public class Ball : MonoBehaviour
                 if (Origin_angle.x < 0)
                     Origin_angle.x *= -1;
             }
+            GetComponent<AudioSource>().Play();
             Origin_angle.Normalize();
         }
 
@@ -231,6 +232,7 @@ public class Ball : MonoBehaviour
 
                 Origin_angle.Normalize();
             }
+            GetComponent<AudioSource>().Play();
         }
         if (collision.gameObject.CompareTag("MapDown")) // ¿≠∫Æ æ∆∑ø∫Æ ø°∞‘ ¥Í¿∏∏È
         {
@@ -241,6 +243,7 @@ public class Ball : MonoBehaviour
 
                 Origin_angle.Normalize();
             }
+            GetComponent<AudioSource>().Play();
         }
 
         if(collision.gameObject.CompareTag("Sans"))

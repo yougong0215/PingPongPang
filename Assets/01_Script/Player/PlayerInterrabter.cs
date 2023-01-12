@@ -190,7 +190,7 @@ public class PlayerInterrabter : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Ball")) // 공에 닿음녀
         {
-
+              GetComponent<AudioSource>().Play();
             SetAbility(collision.gameObject.GetComponent<Ball>());
             Debug.Log("닿음");
             //StartCoroutine(BoxColliderONOFF());

@@ -54,6 +54,7 @@ public class WaterMelon : MonoBehaviour
     {
         if (collision.GetComponent<Ball>())
         {
+            GetComponent<AudioSource>().Play();
             HitGimik(collision.transform);
         }
     }

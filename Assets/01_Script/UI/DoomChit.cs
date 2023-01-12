@@ -8,15 +8,17 @@ public class DoomChit : MonoBehaviour
 {
     [SerializeField] GameObject a = null;
     [SerializeField] Color col;
+    [SerializeField] bool ENDUI;
     [SerializeField] bool IntroUIMove;
     [SerializeField] float gotime = 1.2f;
     private void OnEnable()
     {
-        if (IntroUIMove == true)
+        if (IntroUIMove == true && ENDUI == false)
         {
             transform.DOMoveX(transform.position.x - 1200, gotime + 0.4f);
         }
-        //a.gameObject.SetActive(false);
+        if(a != null)
+            a.gameObject.SetActive(false);
     }
 
     private void Start()
