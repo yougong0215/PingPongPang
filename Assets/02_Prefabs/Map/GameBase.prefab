@@ -319,8 +319,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerEnum: 1
-  Up: 264
-  Down: 258
+  AIMODE: 0
+  Up: 111
+  Down: 108
   PlayerInfin: 0
   TOZAZA: 0.5
   toza: 0
@@ -331,6 +332,7 @@ MonoBehaviour:
   Speed: 5
   MapGimicspeed: 1
   Sprite: {fileID: 4726214872092462964}
+  pos: {fileID: 0}
 --- !u!61 &5390288238747202392
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -935,6 +937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerEnum: 0
+  AIMODE: 0
   Up: 119
   Down: 115
   PlayerInfin: 0
@@ -947,6 +950,7 @@ MonoBehaviour:
   Speed: 5
   MapGimicspeed: 1
   Sprite: {fileID: 8164573598200316367}
+  pos: {fileID: 0}
 --- !u!61 &5390288239984175340
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1308,7 +1312,7 @@ SpriteRenderer:
   m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7085991894747506034
@@ -1481,7 +1485,7 @@ SpriteRenderer:
   m_Size: {x: 1.125, y: 1.625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8164573598200316367

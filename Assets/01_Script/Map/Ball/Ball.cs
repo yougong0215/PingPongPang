@@ -78,7 +78,7 @@ public class Ball : MonoBehaviour
 
         if(Mathf.Abs(Origin_angle.x) < 0.2f)
         {
-            if(Random.Range(0, 2f) == 0)
+            if(Random.Range(0, 2) == 0)
             {
                 Origin_angle.x += 0.2f;
             }
@@ -89,7 +89,7 @@ public class Ball : MonoBehaviour
         }
         if(Mathf.Abs(Origin_angle.y) < 0.2f)
         {
-            if (Random.Range(0, 2f) == 0)
+            if (Random.Range(0, 2) == 0)
             {
                 Origin_angle.y += 0.2f;
             }
@@ -98,6 +98,8 @@ public class Ball : MonoBehaviour
                 Origin_angle.y -= 0.2f;
             }
         }
+
+        Origin_angle.Normalize();
 
         _rigid.velocity = Origin_speed * Origin_angle * MapList.MapSpeed * mapSpeed * Origin_Alter * SpeedMap.MapSpeed * TrickSter;
 
@@ -135,33 +137,27 @@ public class Ball : MonoBehaviour
     {
         this.pl = pl;
 
-        Vector2 Angle_Changer = Origin_angle;
 
-        //loat t = Random.Range(-angler, angler);
-
-
-        if (Dir == 1 && Angle_Changer.x < 0)
-        {
-            Angle_Changer.x *= -1;
-        }
-        else
-        {
-            Angle_Changer.x *= Dir;
-        }
-
-        //Angle_Changer.x -= angler * 5;
-
-
-        Angle_Changer.Normalize();
         //Debug.Log($"{Dir} * {Origin_speed} * {Angle_Changer.y} * {Origin_Alter}");
         if (pl.toza == true)
         {
             Origin_speed *= pl.TOZAZA;
         }
 
-        transform.localScale = new Vector3(Origin_size, Origin_size, 1) * Origin_Alter;
+        if (transform.position.x > 0)
+        {
+            if (Origin_angle.x > 0)
+                Origin_angle.x *= -1;
+        }
+        else if (transform.position.x < 0)
+        {
+            if (Origin_angle.x < 0)
+                Origin_angle.x *= -1;
+        }
 
-        Origin_angle = Angle_Changer;
+
+
+        transform.localScale = new Vector3(Origin_size, Origin_size, 1) * Origin_Alter;
     }
 
     public void AlterSetting()
@@ -174,12 +170,12 @@ public class Ball : MonoBehaviour
 
             if(transform.position.x > 0)
             {
-                if(b.Origin_angle.x < 0)
+                if(b.Origin_angle.x > 0)
                     b.Origin_angle *= -1;
             }
-            else
+            else if (transform.position.x < 0)
             {
-                if (b.Origin_angle.x > 0)
+                if (b.Origin_angle.x < 0)
                     b.Origin_angle *= -1;
             }
 

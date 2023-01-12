@@ -95,12 +95,12 @@ public class GameManager : Singleton<GameManager>
 
         A_RoundWin = false;
         B_RoundWin = false;
-        if (A_WinScore == 1)
+        if (A_WinScore == 5)
         {
             SceneManager.LoadScene("GameVSMODEWinA");
             return;
         }
-        else if (B_WinScore == 1)
+        else if (B_WinScore == 5)
         {
 
             SceneManager.LoadScene("GameVSMODEWinB");
