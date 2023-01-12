@@ -18,7 +18,7 @@ public class MainSound : MonoBehaviour
         }
         if(GameObject.Find("MapList"))
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 }

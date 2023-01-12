@@ -86,7 +86,7 @@ public class GameManager : Singleton<GameManager>
 
     }
 
-    public void GameSet(PlayerEnum pl)
+    public void GameSet(PlayerEnum pl)// 진에
     {
         map.RoundEnd();
 
@@ -102,18 +102,17 @@ public class GameManager : Singleton<GameManager>
             SceneManager.LoadScene("GameVSMODEWinB");
 
         }
-        if (pl == PlayerEnum.A)
+        if (pl == PlayerEnum.A) // 진에면 반대쪽에 승
         {
-            map.PlayerAWin(A_WinScore);
+            map.PlayerAWin(B_WinScore);
         }
         else
         {
-            map.PlayerBWin(B_WinScore);
-            A_WinScore++;
+            map.PlayerBWin(A_WinScore);
         }
 
         cl.gameObject.SetActive(true);
-        StartCoroutine(cl.CardSelect(pl));
+        StartCoroutine(cl.CardSelect(pl)); // 진에 카드고름
 
     }
 
@@ -127,56 +126,57 @@ public class GameManager : Singleton<GameManager>
         map.PlayerBAdd(spi);
     }
 
-    public void PlayerRound(PlayerEnum pl)
+    public void PlayerRound(PlayerEnum pl) // 진에 들어옴
     {
         ui.gameObject.SetActive(true);
 
-        if (A_RoundWin == true && pl == PlayerEnum.A)
-        {
-            StartCoroutine(MapEndGame(PlayerEnum.A));
-            ui.GameWinB();
-            map.PlayerBWin(B_WinScore);
-            A_WinScore++;
-            return;
-        }
-        else if(B_RoundWin == true && pl == PlayerEnum.B)
+        int a = A_WinScore;
+        int b = B_WinScore;
+
+        if (A_RoundWin == true && pl == PlayerEnum.B) // A 가 한번이겻고 진에가 b면
         {
             StartCoroutine(MapEndGame(PlayerEnum.B));
             ui.GameWinA();
+            map.PlayerAWin(a);
             A_WinScore++;
-            map.PlayerBWin(A_WinScore);
+            return;
+        }
+        if(B_RoundWin == true && pl == PlayerEnum.A)
+        {
+            StartCoroutine(MapEndGame(PlayerEnum.A));
+            ui.GameWinB();
+            B_WinScore++;
+            map.PlayerBWin(b);
             return;
         }
 
         StartCoroutine(MapAnimation());
 
-        if (A_RoundWin == true && pl == PlayerEnum.B && B_RoundWin == false)
+        if (A_RoundWin == true && pl == PlayerEnum.A && B_RoundWin == false)
         {
-            A_RoundWin = true;
             B_RoundWin = true;
             ui.RoundWinPlayerOther();
-            map.PlayerAWin(A_WinScore);
+            map.PlayerBWin(b);
             return;
         }
-        else if(B_RoundWin == true && pl == PlayerEnum.A &&  A_RoundWin == false)
+        if(B_RoundWin == true && pl == PlayerEnum.B && A_RoundWin == false)
         {
             A_RoundWin = true;
-            B_RoundWin = true;
             ui.RoundWinPlayerOther();
-            map.PlayerBWin(B_WinScore);
+            map.PlayerAWin(a);
             return;
         }
 
         if(pl == PlayerEnum.A)
         {
             ui.RoundWinPlayer2();
-            map.PlayerBWin(B_WinScore);
+            map.PlayerBWin(b);
             B_RoundWin = true;
         }
         else
         {
             ui.RoundWinPlayer1();
-            map.PlayerAWin(A_WinScore);
+            map.PlayerAWin(a);
             A_RoundWin = true;
         }
 

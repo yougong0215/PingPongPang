@@ -15,12 +15,16 @@ public class SoundPlayer : MonoBehaviour
 
     private void Update()
     {
-        float volume1 = audioSliderMaster.value;
-        audioMixer.SetFloat("Master", volume1);
-        float volume2 = audioSliderBGM.value;
-        audioMixer.SetFloat("BGM", volume2);
-        float volume3 = audioSliderSFX.value;
-        audioMixer.SetFloat("SFX", volume3);
+
+        if(Input.GetMouseButtonUp(0))
+        {
+            float volume1 = audioSliderMaster.value;
+            audioMixer.SetFloat("Master", volume1);
+            float volume2 = audioSliderBGM.value;
+            audioMixer.SetFloat("BGM", volume2);
+            float volume3 = audioSliderSFX.value;
+            audioMixer.SetFloat("SFX", volume3);
+        }
     }
 
 }
