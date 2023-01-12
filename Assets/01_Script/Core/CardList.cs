@@ -37,6 +37,7 @@ public class CardList : MonoBehaviour
     [SerializeField] GameObject A;
     [SerializeField] GameObject B;
     [SerializeField] GameObject C;
+    [SerializeField] Image player;
 
     public List<T> GetShuffleList<T>(List<T> _list)
     {
@@ -65,6 +66,15 @@ public class CardList : MonoBehaviour
 
     public IEnumerator CardSelect(PlayerEnum pl, bool Choose = false)
     {
+        if(pl==PlayerEnum.A)
+        {
+            player.sprite = GameManager.Instance.A;
+        }
+        else
+        {
+            player.sprite = GameManager.Instance.B;
+        }
+
         yield return null;
         yield return null;
         for (int i = 0; i < _cardList.Count; i++)

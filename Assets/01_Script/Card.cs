@@ -33,7 +33,7 @@ public class Card : MonoBehaviour
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = t;
         transform.GetChild(1).GetComponent<Image>().sprite = img;
         transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = ex;
-        transform.GetChild(2).GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, 1);
+
         this.pl = pl;
         this.Choosed = Choosed;
         _spriteSave = ab;
@@ -41,7 +41,6 @@ public class Card : MonoBehaviour
         this.abb = abb;
 
     }
-    
 
     IEnumerator ch()
     {
@@ -98,7 +97,7 @@ public class Card : MonoBehaviour
         GetComponent<Image>().color = new Color(1, 1,1, 0.7f);
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(1, 1,1, 0.7f);
         transform.GetChild(1).GetComponent<Image>().color = new Color(1, 1,1, 0.7f);
-        transform.GetChild(2).GetComponent<TextMeshProUGUI>().color = new Color(1, 1,1, 0.7f);
+        transform.GetChild(2).GetComponent<TextMeshProUGUI>().color = new Color(0, 0,0, 0.7f);
     }
 
     public void NoAlpha()
@@ -106,7 +105,7 @@ public class Card : MonoBehaviour
         GetComponent<Image>().color = new Color(1, 1, 1f, 1f);
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1f, 1f);
         transform.GetChild(1).GetComponent<Image>().color = new Color(1, 1, 1f, 1);
-        transform.GetChild(2).GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1f, 1);
+        transform.GetChild(2).GetComponent<TextMeshProUGUI>().color = new Color(0, 0, 0f, 1);
     }
     public void Choose()
     {
