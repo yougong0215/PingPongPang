@@ -47,93 +47,105 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardList:
   - _cardObj: {fileID: 3218184519694212034, guid: f603236b242b8e447a582beb1466b7a5, type: 3}
-    NameExplain: Big Mushrume
+    NameExplain: "\uAC70\uC778\uD654"
     cardImg: {fileID: 1366678786, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
     ItemImg: {fileID: 21300000, guid: 431e121d6cdbb0b4293aecbe350d18de, type: 3}
-    Explain: "\uBA39\uC73C\uBA74 \n\uAC70\uB300\uD574\uC9C4\uB2E4"
+    Explain: "\uCE90\uB9AD\uD130 \uD06C\uAE30\uAC00 \uC99D\uAC00\uD558\uACE0,\n\uCE90\uB9AD\uD130
+      \uC774\uB3D9\uC18D\uB3C4\uAC00 \uAC10\uC18C\uD569\uB2C8\uB2E4!"
     Overlap: 0
     CardLuck: 3
   - _cardObj: {fileID: 3218184519694212034, guid: d0b8309777ba7dd41ba89e90633482b8, type: 3}
-    NameExplain: Small Mushrume
+    NameExplain: "\uC18C\uC778\uD654"
     cardImg: {fileID: 1366678786, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
     ItemImg: {fileID: 21300000, guid: fec22e916c9443548ac2900cf5c92598, type: 3}
-    Explain: "\uBA39\uC73C\uBA74 \n\uC791\uC544\uC838\uBC84\uB9B0\uB2E4\n"
+    Explain: "\uCE90\uB9AD\uD130 \uD06C\uAE30\uAC00 \uAC10\uC18C\uD558\uACE0,\n\uCE90\uB9AD\uD130
+      \uC774\uB3D9\uC18D\uB3C4\uAC00 \uC99D\uAC00\uD569\uB098\uB2E4!"
     Overlap: 0
     CardLuck: 3
   - _cardObj: {fileID: 3218184519694212034, guid: 92293be58b40d7a4cb0a50e1b6bdf622, type: 3}
-    NameExplain: Speed Shoot
+    NameExplain: "\uC2A4\uD53C\uB4DC \uC0F7"
     cardImg: {fileID: 1366678786, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
     ItemImg: {fileID: 21300000, guid: b51741ac168fcef4a9f7ee6194ae7e6b, type: 3}
-    Explain: "\uC288\uC6B0\uC6B0\uC6C5 \n\uBE60\uB978\uC18D\uB3C4\uC758 \n\uAC15\uC18D\uAD6C\n"
+    Explain: "\uACF5 \uC774\uB3D9\uC18D\uB3C4\uAC00 \uC99D\uAC00\uD558\uACE0,\n\uACF5
+      \uD06C\uAE30\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4!"
     Overlap: 0
     CardLuck: 3
   - _cardObj: {fileID: 3218184519694212034, guid: 608db1ffd2e20da4ab4e3dc27c191559, type: 3}
-    NameExplain: Slow Shoot
+    NameExplain: "\uC2AC\uB85C\uC6B0\uC0F7"
     cardImg: {fileID: 1366678786, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
     ItemImg: {fileID: 21300000, guid: 5b77e41548ded644a9a6042fdf7b0952, type: 3}
-    Explain: "\uB290\uB824\uD130\uC9C4\n\uACF5 \uAD74\uB7EC\uAC00"
-    Overlap: 0
-    CardLuck: 3
-  - _cardObj: {fileID: 3218184519694212034, guid: c27a8d3a4ef50a1469fbe7e664085cc5, type: 3}
-    NameExplain: FAST
-    cardImg: {fileID: -1775986853, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
-    ItemImg: {fileID: 21300000, guid: a7b133ed7301eba42a6ef28999b7f973, type: 3}
-    Explain: "\uC6B0\uB9AC \uD55C\uBC88\n\uBE60\uB974\uAC8C \uAC00\uBCFC\uAE4C"
-    Overlap: 0
-    CardLuck: 3
-  - _cardObj: {fileID: 3218184519694212034, guid: 0d670f0e3460f9e4a81deab188a11336, type: 3}
-    NameExplain: STOP
-    cardImg: {fileID: -1775986853, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
-    ItemImg: {fileID: 21300000, guid: d96e0231f986e4449958c389a20bd85e, type: 3}
-    Explain: "\uB0B4\uC560\uC560\uACE0\uC624\uC639\uC73C\uC744\n\uBC14\uC544\uC54B\uC544\uB77C\uC544!"
+    Explain: "\uACF5 \uC774\uB3D9\uC18D\uB3C4\uAC00 \uAC10\uC18C\uD558\uACE0,\n\uACF5
+      \uD06C\uAE30\uAC00 \uAC10\uC18C\uD569\uB2C8\uB2E4!"
     Overlap: 0
     CardLuck: 3
   - _cardObj: {fileID: 3218184519694212034, guid: 83e28f0dd576dff47a252be209fdf291, type: 3}
-    NameExplain: Speedly
+    NameExplain: "\uD1A0\uB07C"
     cardImg: {fileID: -1775986853, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
-    ItemImg: {fileID: 21300000, guid: a7b133ed7301eba42a6ef28999b7f973, type: 3}
-    Explain: "\uC289 \uC289\uC288\uC289\n\uC288\uC288\uC289\uC289"
+    ItemImg: {fileID: 21300000, guid: 4d7e5b9b0dedc81409b4eb60ccd2d5a1, type: 3}
+    Explain: "\uC591\uD300\uC758 \uCE90\uB9AD\uD130 \uC774\uB3D9\uC18D\uB3C4\uAC00
+      \uC99D\uAC00\uD558\uACE0,\n\uC591\uD300\uC758 \uACF5 \uD06C\uAE30\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4!"
     Overlap: 0
     CardLuck: 3
   - _cardObj: {fileID: 3218184519694212034, guid: 0af789daf527b924e9b287e7f9497abf, type: 3}
-    NameExplain: SLOWLY
+    NameExplain: "\uAC70\uBD81\uC774"
+    cardImg: {fileID: -1775986853, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
+    ItemImg: {fileID: 21300000, guid: 92e17c1e18c5f844c840d5ef0478e381, type: 3}
+    Explain: "\uC591\uD300\uC758 \uCE90\uB9AD\uD130 \uC774\uB3D9\uC18D\uB3C4\uAC00
+      \uAC10\uC18C\uD558\uACE0,\n\uC591\uD300\uC758 \uACF5 \uD06C\uAE30\uAC00 \uAC10\uC18C\uD569\uB2C8\uB2E4!"
+    Overlap: 0
+    CardLuck: 3
+  - _cardObj: {fileID: 3218184519694212034, guid: c27a8d3a4ef50a1469fbe7e664085cc5, type: 3}
+    NameExplain: "\uBE68\uB9AC\uAC10\uAE30"
+    cardImg: {fileID: -1775986853, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
+    ItemImg: {fileID: 21300000, guid: a7b133ed7301eba42a6ef28999b7f973, type: 3}
+    Explain: "\uC591\uD300\uC758 \uACF5 \uC774\uB3D9\uC18D\uB3C4\uAC00 \uC99D\uAC00\uD558\uACE0,\n\uCE90\uB9AD\uD130\uC758
+      \uD06C\uAE30\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4!"
+    Overlap: 0
+    CardLuck: 3
+  - _cardObj: {fileID: 3218184519694212034, guid: 0d670f0e3460f9e4a81deab188a11336, type: 3}
+    NameExplain: "\uC5ED\uC7AC\uC0DD"
     cardImg: {fileID: -1775986853, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
     ItemImg: {fileID: 21300000, guid: d96e0231f986e4449958c389a20bd85e, type: 3}
-    Explain: "\uD558 \uADF8\uAC78\n\uB204\uAD6C \uB9DE\uC73C\uB77C\uACE0\n\uB358\uC9C4\uAC70\uC9C0"
+    Explain: "\uC591\uD300\uC758 \uACF5 \uC774\uB3D9\uC18D\uB3C4\uAC00 \uAC10\uC18C\uD558\uACE0,\n\uCE90\uB9AD\uD130\uC758
+      \uD06C\uAE30\uAC00 \uAC10\uC18C\uD569\uB2C8\uB2E4!"
     Overlap: 0
     CardLuck: 3
   - _cardObj: {fileID: 3218184519694212034, guid: 306264d801e332b459e68506703ec5cd, type: 3}
-    NameExplain: TOZAZA
+    NameExplain: "\uACB0\uB2E8\uB825\uC788\uB294 \uD22C\uC790\uC790"
     cardImg: {fileID: -1657664934, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
     ItemImg: {fileID: 21300000, guid: 2bcace8a2d8b58741b69b947b85b1d60, type: 3}
-    Explain: "\uACB0\uB2E8\uB825 \uC88B\uC740 \uC0AC\uB78C\uC740 \uBBF8\uB798\uB97C
-      \uBCF8\uB2E4\n\uCD08\uAE30 \uC18D\uB3C4\uAC00 \uB290\uB824\uC9C0\uC9C0\uB9CC\n\uCE60\uC218\uB85D
-      \uBE68\uB77C\uC9C4\uB2E4\n\u3147\u3134"
+    Explain: "\uACF5\uC774 \uB454\uD654 \uC0C1\uD0DC\uB85C \uC2DC\uC791\uD569\uB2C8\uB2E4!\n\uACF5\uC744
+      \uB2F9\uC2E0\uC774 \uC9C1\uC811 \uD295\uACA8\uB0BC \uB54C\uB9C8\uB2E4 \n\uACF5\uC758
+      \uC774\uB3D9\uC18D\uB3C4\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4!"
     Overlap: 0
-    CardLuck: 3
-  - _cardObj: {fileID: 3218184519694212034, guid: f9eff027f4e399642800eb924f885b5e, type: 3}
-    NameExplain: Double Double
+    CardLuck: 2
+  - _cardObj: {fileID: 3218184519694212034, guid: 1c87802f14ffae74eac37577271b34de, type: 3}
+    NameExplain: "\uBB38\uACFC"
     cardImg: {fileID: 1442070603, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
     ItemImg: {fileID: 21300000, guid: 41eb62334d699bf4da1394549f90ca58, type: 3}
-    Explain: "\uD558\uB098\uBCF4\uB2E8 \uB458\uC774 \uC88B\uC9C0\n\uAC70\uC6B8\uCC98\uB7FC
-      \uD589\uB3D9\uD558\uB294 \uC0AC\uB78C\uC774 \uC0DD\uAE34\uB2E4."
+    Explain: "\uACF5\uC758 \uBC18\uC0AC\uAC01\uC774 \uC608\uCE21\uD560 \uC218 \uC5C6\uAC8C
+      \uBC14\uB01D\uB2C8\uB2E4!"
     Overlap: 0
-    CardLuck: 3
+    CardLuck: 2
   - _cardObj: {fileID: 3218184519694212034, guid: b2bf0ed66b6217048865da3ad0f0cfe9, type: 3}
-    NameExplain: Twining
+    NameExplain: "\uBD84\uC5F4"
     cardImg: {fileID: 1442070603, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
     ItemImg: {fileID: 21300000, guid: faf3a1812cd186a4aa9a6e2838c9ef16, type: 3}
-    Explain: "\uC774\uAC70\uCC38 \uAC1C\uD310\uC774\uB124\n\uACF5\uC774 \uBD84\uC5F4\uD569\uB2C8\uB2E4\n(
-      \uCD5C\uB300 4\uBC88 )"
+    Explain: "\uACF5\uC744 \uBD84\uC5F4\uD574 2\uAC1C\uB85C \uB098\uB215\uB2C8\uB2E4!\n2\uAC1C\uC758
+      \uACF5\uC740 \uD06C\uAE30\uC640 \uB2A5\uB825\uC774\n\uAC01\uAC01 50% \uB9CC\uD07C
+      \uC801\uC6A9\uB429\uB2C8\uB2E4!"
     Overlap: 0
-    CardLuck: 3
-  - _cardObj: {fileID: 3218184519694212034, guid: 1c87802f14ffae74eac37577271b34de, type: 3}
-    NameExplain: MoonGWA
+    CardLuck: 1
+  - _cardObj: {fileID: 3218184519694212034, guid: f9eff027f4e399642800eb924f885b5e, type: 3}
+    NameExplain: "\uC30D\uB465\uC774 \uBCC4\uC790\uB9AC"
     cardImg: {fileID: 1442070603, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
     ItemImg: {fileID: 21300000, guid: 905a4fc8bfd68884fa24e135145d0e7f, type: 3}
-    Explain: "\uBB34\uB1CC\uACFC"
+    Explain: "\uCE90\uB9AD\uD130\uC640 \uC815\uBC18\uB300\uB85C \uC6C0\uC9C1\uC774\uB294
+      \uC30D\uB465\uC774\uB97C \uC18C\uD658\uD569\uB2C8\uB2E4!\n\uCE90\uB9AD\uD130\uC640
+      \uC30D\uB465\uC774\uB294 \uD06C\uAE30\uC640 \uB2A5\uB825\uC774 \n\uAC01\uAC01
+      50% \uB9CC\uD07C \uC801\uC6A9\uB429\uB2C8\uB2E4!"
     Overlap: 0
-    CardLuck: 3
+    CardLuck: 1
   _cardListed: []
   A: {fileID: 72400454717153339}
   B: {fileID: 72400453633265378}
