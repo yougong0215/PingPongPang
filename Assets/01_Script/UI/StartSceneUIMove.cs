@@ -16,13 +16,6 @@ public class StartSceneUIMove : MonoBehaviour
     { 
         vid.loopPointReached += CheckOver; 
     }
-    private void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
-        {
-            SceneManager.LoadScene("Sans");
-        }
-    }
 
     void CheckOver(UnityEngine.Video.VideoPlayer vp)
     {
