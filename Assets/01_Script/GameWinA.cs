@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class GameWinA : MonoBehaviour
 {
+    public bool AWin = false;
     Sprite spi;
     // Start is called before the first frame update
     void Start()
     {
-       spi = GameManager.Instance.A;
+        if(AWin == true)
+            spi = GameManager.Instance.B;
+        else
+        {
+            spi = GameManager.Instance.A;
+        }
+        
         GetComponent<SpriteRenderer>().sprite = spi;
     }
 

@@ -48,4 +48,9 @@ public class DoomChit : MonoBehaviour
         a.gameObject.SetActive(false);
     }
 
+    public void EXIT()
+    {
+        Application.Quit();
+    }
+
 }

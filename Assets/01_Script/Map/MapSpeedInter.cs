@@ -17,6 +17,7 @@ public class MapSpeedInter : MonoBehaviour
         {
             pl.MapGimicspeed = speed;
             GetComponent<CircleCollider2D>().enabled = false;
+            transform.position += new Vector3(0, 1000, 100);
         }
     }
     private void Update()
