@@ -33,6 +33,7 @@ public class Card : MonoBehaviour
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = t;
         transform.GetChild(1).GetComponent<Image>().sprite = img;
         transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = ex;
+        transform.GetChild(2).GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, 1);
         this.pl = pl;
         this.Choosed = Choosed;
         _spriteSave = ab;
