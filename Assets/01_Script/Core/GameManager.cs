@@ -48,6 +48,8 @@ public class GameManager : Singleton<GameManager>
         A = FindObjectOfType<CharacterSelect>().GetA();
         B = FindObjectOfType<CharacterSelect>().GetB();
 
+        All.Clear();
+
         A_WinScore = 0;
         B_WinScore = 0;
         a_ability1.Clear();
@@ -93,12 +95,12 @@ public class GameManager : Singleton<GameManager>
 
         A_RoundWin = false;
         B_RoundWin = false;
-        if (A_WinScore == 5)
+        if (A_WinScore == 1)
         {
             SceneManager.LoadScene("GameVSMODEWinA");
             return;
         }
-        else if (B_WinScore == 5)
+        else if (B_WinScore == 1)
         {
 
             SceneManager.LoadScene("GameVSMODEWinB");
@@ -292,6 +294,7 @@ public class GameManager : Singleton<GameManager>
                     p.twin = true;
                     break;
             }
+            Debug.Log($"스피드설정 : {speed}");
         }
         Debug.Log($"스피드 : {speed}");
         if(p._playerEnum == PlayerEnum.A && map.PlayAAIMODE == true)

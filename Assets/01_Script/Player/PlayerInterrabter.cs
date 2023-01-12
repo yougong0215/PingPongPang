@@ -115,10 +115,13 @@ public class PlayerInterrabter : MonoBehaviour
             obj.transform.position += new Vector3(0.01f, 0, 0);
 
             alter = obj.GetComponent<PlayerInterrabter>();
+            alter.pos = transform;
         }
     }
     float t = 0;
     List<Ball> ballPos;
+
+    public Transform pos;
 
 
     // Update is called once per frame
@@ -128,7 +131,6 @@ public class PlayerInterrabter : MonoBehaviour
         {
             if (Ice == false)
             {
-
                 if (Input.GetKey(Up))
                 {
                     transform.position += new Vector3(0, twinValue) * MapGimicspeed * Speed * Time.deltaTime;
@@ -143,7 +145,7 @@ public class PlayerInterrabter : MonoBehaviour
             }
             else
             {
-
+                
                 transform.position =
                     Vector3.Lerp(transform.position, transform.position + new Vector3(0, t * twinValue, 0), 10 * Time.deltaTime);
                 if (Input.GetKey(Up))
@@ -187,66 +189,74 @@ public class PlayerInterrabter : MonoBehaviour
                 }
             }
 
-
-            if (Ice == false)
+            if (twinValue == 1)
             {
+                if (Ice == false)
+                {
 
-                if (ballPos[0].transform.position.y > transform.position.y)
-                {
-                    transform.position += new Vector3(0, twinValue) * MapGimicspeed * Speed * Time.deltaTime;
-                    Debug.Log("U[");
+                    if (ballPos[0].transform.position.y > transform.position.y)
+                    {
+                        transform.position += new Vector3(0, 1) * MapGimicspeed * Speed * Time.deltaTime;
+                        Debug.Log("U[");
+                    }
+                    if (ballPos[0].transform.position.y < transform.position.y)
+                    {
+                        transform.position += new Vector3(0, -1) * MapGimicspeed * Speed * Time.deltaTime;
+                        Debug.Log("Down");
+                    }
+                    Debug.Log($"{new Vector3(0, -twinValue)} * {MapGimicspeed} * {Speed}");
                 }
-                if (ballPos[0].transform.position.y < transform.position.y)
+                else
                 {
-                    transform.position += new Vector3(0, -twinValue) * MapGimicspeed * Speed * Time.deltaTime;
-                    Debug.Log("Down");
+                    bool up = false;
+                    bool down = false;
+                    transform.position =
+                        Vector3.Lerp(transform.position, transform.position + new Vector3(0, t * twinValue, 0), 10 * Time.deltaTime);
+                    if (ballPos[0].transform.position.y > transform.position.y)
+                    {
+                        t += Time.deltaTime;
+                        up = true;
+                    }
+                    else
+                    {
+                        up = false;
+                    }
+                    if (ballPos[0].transform.position.y < transform.position.y)
+                    {
+                        t -= Time.deltaTime;
+                        down = true;
+                    }
+                    else
+                    {
+                        down = false;
+                    }
+
+                    if (!up && t > 0)
+                    {
+                        t -= Time.deltaTime;
+                    }
+                    if (!down && t < 0)
+                    {
+                        t += Time.deltaTime;
+                    }
+                    if (t > 1)
+                    {
+                        t = 1;
+                    }
+                    if (t < -1)
+                    {
+                        t = -1;
+                    }
                 }
-                Debug.Log($"{new Vector3(0, -twinValue)} * {MapGimicspeed} * {Speed}");
             }
             else
             {
-                bool up = false;
-                bool down = false;
-                transform.position =
-                    Vector3.Lerp(transform.position, transform.position + new Vector3(0, t * twinValue, 0), 10 * Time.deltaTime);
-                if (ballPos[0].transform.position.y > transform.position.y)
-                {
-                    t += Time.deltaTime;
-                    up = true;
-                }
-                else
-                {
-                    up = false;
-                }
-                if (ballPos[0].transform.position.y < transform.position.y)
-                {
-                    t -= Time.deltaTime;
-                    down = true;
-                }
-                else
-                {
-                    down = false;
-                }
-
-                if (!up && t > 0)
-                {
-                    t -= Time.deltaTime;
-                }
-                if (!down && t < 0)
-                {
-                    t += Time.deltaTime;
-                }
-                if (t > 1)
-                {
-                    t = 1;
-                }
-                if (t < -1)
-                {
-                    t = -1;
-                }
+                transform.position = new Vector3(this.pos.position.x, -this.pos.position.y, 0);
             }
-
+         
         }
+
+    
        
 
         if (PlayerInfin == true)

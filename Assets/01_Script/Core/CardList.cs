@@ -120,24 +120,20 @@ public class CardList : MonoBehaviour
         obj.GetComponent<Card>().Set(_cardListed[0].NameExplain, _cardListed[0].ItemImg, _cardListed[0].cardImg, _cardListed[0].Explain, pl, _cardListed[0].ItemImg, _cardListed[0]  ,Choose, aichan);
         if(aichan== true && AINUM == 0)
         {
-            obj.GetComponent<Button>().interactable = false;
-        }
-        else
-        {
+            AIChoose = obj.GetComponent<Card>();
             Destroy(obj.GetComponent<Button>());
         }
+
         
         yield return null;
         obj = Instantiate(_cardListed[1]._cardObj.gameObject, B.transform);
         obj.GetComponent<Card>().Set(_cardListed[1].NameExplain, _cardListed[1].ItemImg, _cardListed[1].cardImg, _cardListed[1].Explain, pl, _cardListed[1].ItemImg, _cardListed[1], Choose, aichan);
         if (aichan == true && AINUM == 1)
         {
+            AIChoose = obj.GetComponent<Card>();
             Destroy(obj.GetComponent<Button>());
         }
-        else
-        {
-            AIChoose = obj.GetComponent<Card>();
-        }
+
 
 
         yield return null;
@@ -145,11 +141,8 @@ public class CardList : MonoBehaviour
         obj.GetComponent<Card>().Set(_cardListed[2].NameExplain, _cardListed[2].ItemImg, _cardListed[2].cardImg, _cardListed[2].Explain, pl, _cardListed[2].ItemImg, _cardListed[0], Choose, aichan);
         if (aichan == true && AINUM == 2)
         {
-            Destroy(obj.GetComponent<Button>());
-        }
-        else
-        {
             AIChoose = obj.GetComponent<Card>();
+            Destroy(obj.GetComponent<Button>());
         }
 
 
