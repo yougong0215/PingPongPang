@@ -11,7 +11,7 @@ public class Pause : MonoBehaviour
     bool pause;
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return))
+        if(Input.GetKeyDown(KeyCode.Escape) && pause==false )
         {
             a.gameObject.SetActive(true);
             pause = true;
@@ -28,6 +28,8 @@ public class Pause : MonoBehaviour
 
     public void StartMap()
     {
+        Time.timeScale = 1;
+        pause = false;
         SceneManager.LoadScene("StartScene");
     }
 }

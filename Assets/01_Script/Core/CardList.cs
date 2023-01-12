@@ -144,14 +144,14 @@ public class CardList : MonoBehaviour
             AIChoose = obj.GetComponent<Card>();
             Destroy(obj.GetComponent<Button>());
         }
-
+        _cardListed.Clear();
 
         if (aichan==true)
         {
             yield return new WaitForSeconds(2f);
 
             AIChoose.Choose();
-
+            _cardList[AINUM].CardLuck -= 1;
 
         }
 

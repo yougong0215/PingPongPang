@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,7 @@ public class MapList : MonoBehaviour
     [SerializeField] Sprite Blue;
     [SerializeField] Sprite Red2;
     [SerializeField] Sprite Blue2;
+    [SerializeField] TextMeshProUGUI tmp;
 
     [SerializeField] public Image panel;
 
@@ -125,7 +127,7 @@ public class MapList : MonoBehaviour
         map = o;
         o.transform.position = transform.position;
 
-        this.t = 60;
+        this.t = 0;
         SpeedMap.MapSpeed = 1;
         SpeedMap.Trickstar = false;
         //_mapList.Remove(_mapList[0]);
@@ -133,20 +135,26 @@ public class MapList : MonoBehaviour
 
     private void Update()
     {
-        t -= Time.deltaTime;
+        t += Time.deltaTime;
         //Debug.Log(t);
-        if (t < 0)
+        if (t > 60)
+        {
+            MapSpeed = 6;
+        }
+        else if (t > 30)
         {
             MapSpeed = 3;
         }
-        else if (t < 30)
+        else if (t > 15)
         {
             MapSpeed = 2;
         }
-        else
+        else if (t < 15)
         {
             MapSpeed = 1;
         }
+
+        tmp.text = $"{(int)t}";
     }
 
     public void RoundEnd()

@@ -26,7 +26,7 @@ public class SpeedMap : MonoBehaviour
 
             if (time < 0)
             {
-                o = Random.Range(0.7f, 1.3f);
+                o = Random.Range(0.01f, 1.99f);
 
                 time = Mathf.Abs(o) * 5;
                 if (time < 2)
@@ -36,7 +36,7 @@ public class SpeedMap : MonoBehaviour
 
                 MapSpeed = o;
 
-                Persent.text = $"{(int)((o - 1) * 100)}%";
+                Persent.text = $"{((o - 1) * 100).ToString("F1")}%";
             }
             tmp.text = $"0{time.ToString("F1")}{Random.Range(0, 10)}";
         }

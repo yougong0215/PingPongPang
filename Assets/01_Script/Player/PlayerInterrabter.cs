@@ -78,6 +78,7 @@ public class PlayerInterrabter : MonoBehaviour
         _rigid = GetComponent<Rigidbody2D>();
 
         StartCoroutine(I());
+        StartCoroutine(io());
     }
 
     IEnumerator I()
@@ -114,8 +115,18 @@ public class PlayerInterrabter : MonoBehaviour
             obj.transform.parent = transform.parent;
             obj.transform.position += new Vector3(0.01f, 0, 0);
 
-            alter = obj.GetComponent<PlayerInterrabter>();
-            alter.pos = transform;
+            obj.GetComponent<PlayerInterrabter>().pos = transform;
+
+            obj.GetComponent<PlayerInterrabter>().twinValue = -1;
+            obj.GetComponent<PlayerInterrabter>().twinValue = -1;
+            obj.GetComponent<PlayerInterrabter>().twinValue = -1;
+            obj.GetComponent<PlayerInterrabter>().twinValue = -1;
+            obj.GetComponent<PlayerInterrabter>().twinValue = -1;
+            twinValue = 1;
+            twinValue = 1;
+            twinValue = 1;
+            twinValue = 1;
+            twinValue = 1;
         }
     }
     float t = 0;
@@ -124,6 +135,37 @@ public class PlayerInterrabter : MonoBehaviour
     public Transform pos;
 
 
+    IEnumerator io()
+    {
+        ballPos = FindObjectsOfType<Ball>().ToList();
+        for (int i = 1; i < ballPos.Count; i++)
+        {
+            if (Vector3.Distance(transform.position, ballPos[i - 1].transform.position)
+                > Vector3.Distance(transform.position, ballPos[i].transform.position))
+            {
+                Ball b = ballPos[i - 1];
+                ballPos[i - 1] = ballPos[i];
+                ballPos[i] = b;
+            }
+        }
+        yield return new WaitForSeconds(0.3f);
+        StartCoroutine(io());
+    }
+
+    private void Start()
+    {
+        ballPos = FindObjectsOfType<Ball>().ToList();
+        for (int i = 1; i < ballPos.Count; i++)
+        {
+            if (Vector3.Distance(transform.position, ballPos[i - 1].transform.position)
+                > Vector3.Distance(transform.position, ballPos[i].transform.position))
+            {
+                Ball b = ballPos[i - 1];
+                ballPos[i - 1] = ballPos[i];
+                ballPos[i] = b;
+            }
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -177,23 +219,11 @@ public class PlayerInterrabter : MonoBehaviour
         }
         else
         {
-            ballPos = FindObjectsOfType<Ball>().ToList();
-            for (int i = 1; i < ballPos.Count; i++)
-            {
-                if (Vector3.Distance(transform.position, ballPos[i - 1].transform.position)
-                    < Vector3.Distance(transform.position, ballPos[i].transform.position))
-                {
-                    Ball b = ballPos[i - 1];
-                    ballPos[i - 1] = ballPos[i];
-                    ballPos[i] = b;
-                }
-            }
 
             if (twinValue == 1)
             {
                 if (Ice == false)
                 {
-
                     if (ballPos[0].transform.position.y > transform.position.y)
                     {
                         transform.position += new Vector3(0, 1) * MapGimicspeed * Speed * Time.deltaTime;

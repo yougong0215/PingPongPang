@@ -15,6 +15,8 @@ public class Ball : MonoBehaviour
 {
     Rigidbody2D _rigid;
 
+    public bool hit;
+
     [SerializeField] public float Origin_speed = 3;
     [SerializeField] float Origin_size = 0.4f;
     [SerializeField] public Vector2 Origin_angle = Vector2.zero;
@@ -239,7 +241,7 @@ public class Ball : MonoBehaviour
 
         if (collision.gameObject.CompareTag("MapUp")) // ¿≠∫Æ æ∆∑ø∫Æ ø°∞‘ ¥Í¿∏∏È
         {
-            if (_rigid.velocity.y >= 0)
+            if (Origin_angle.y >= 0)
             {
                 Origin_angle.y *= -1f;
                 Origin_angle.y += Random.Range(-0.2f, 0.2f);
@@ -250,7 +252,7 @@ public class Ball : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("MapDown")) // ¿≠∫Æ æ∆∑ø∫Æ ø°∞‘ ¥Í¿∏∏È
         {
-            if (_rigid.velocity.y <= 0)
+            if (Origin_angle.y <= 0)
             {
                 Origin_angle.y *= -1f;
                 Origin_angle.y += Random.Range(-0.2f, 0.2f);
@@ -282,6 +284,30 @@ public class Ball : MonoBehaviour
             TrickSter = 1;
         }
 
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MapUp")) // ¿≠∫Æ æ∆∑ø∫Æ ø°∞‘ ¥Í¿∏∏È
+        {
+            if (Origin_angle.y >= 0)
+            {
+                Origin_angle.y *= -1f;
+                Origin_angle.y += Random.Range(-0.2f, 0.2f);
+
+                Origin_angle.Normalize();
+            }
+        }
+        if (collision.gameObject.CompareTag("MapDown")) // ¿≠∫Æ æ∆∑ø∫Æ ø°∞‘ ¥Í¿∏∏È
+        {
+            if (Origin_angle.y <= 0)
+            {
+                Origin_angle.y *= -1f;
+                Origin_angle.y += Random.Range(-0.2f, 0.2f);
+
+                Origin_angle.Normalize();
+            }
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)

@@ -48,6 +48,8 @@ public class GameManager : Singleton<GameManager>
         A = FindObjectOfType<CharacterSelect>().GetA();
         B = FindObjectOfType<CharacterSelect>().GetB();
 
+        
+
         All.Clear();
 
         A_WinScore = 0;
@@ -95,6 +97,8 @@ public class GameManager : Singleton<GameManager>
 
         A_RoundWin = false;
         B_RoundWin = false;
+        Debug.Log($"AWin : {A_WinScore}");
+        Debug.Log($"BWin : {B_WinScore}");
         if (A_WinScore == 5)
         {
             SceneManager.LoadScene("GameVSMODEWinA");
@@ -260,6 +264,11 @@ public class GameManager : Singleton<GameManager>
     {
         float speed = 5;
         Vector3 size = new Vector3(0.3f, 1.4f, 1);
+        if(p._playerEnum == PlayerEnum.B)
+        {
+            p.transform.GetChild(0).transform.localScale = new Vector3(1.2f, 0.257f, 0.36f);
+        }
+
         float Anger = 0.15f;
         for (int i = 0; i < t.Count; i++)
         {

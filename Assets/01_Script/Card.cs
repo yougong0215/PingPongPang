@@ -80,8 +80,6 @@ public class Card : MonoBehaviour
             }
         }
 
-        GameManager.Instance.cl._cardList.Find(a => a == abb).CardLuck--;
-
 
         if (Choosed == false)
             GameManager.Instance.GameStart();
