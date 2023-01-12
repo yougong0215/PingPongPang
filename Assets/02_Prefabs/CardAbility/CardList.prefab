@@ -185,7 +185,7 @@ MonoBehaviour:
     Overlap: 0
     CardLuck: 3
   - _cardObj: {fileID: 3218184519694212034, guid: 306264d801e332b459e68506703ec5cd, type: 3}
-    NameExplain: "\uACB0\uB2E8\uB825\uC788\uB294 \uD22C\uC790\uC790"
+    NameExplain: "\uD6C4\uBC18\uD22C\uC790\uC790"
     cardImg: {fileID: -1657664934, guid: 07df064c1310fdd44baa321313d8e6c0, type: 3}
     ItemImg: {fileID: 21300000, guid: 2bcace8a2d8b58741b69b947b85b1d60, type: 3}
     Explain: "\uACF5 \uB454\uD654\uC0C1\uD0DC \uC2DC\uC791\n\uACF5\uC744 \uC9C1\uC811
